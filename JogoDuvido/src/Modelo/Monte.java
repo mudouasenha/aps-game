@@ -5,5 +5,6 @@ import java.util.List;
 public class Monte {
 	
 	protected List<Carta> conteudo;
+	protected Carta[] ultimaJogada;
 
 }
