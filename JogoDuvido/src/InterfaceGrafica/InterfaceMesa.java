@@ -9,22 +9,30 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+import javax.swing.JMenu;
 
 public class InterfaceMesa extends JFrame{
-	public InterfaceMesa() {
+	
+	protected AtorJogador ator;
+	
+	public InterfaceMesa(){
+		
 		getContentPane().setBackground(new Color(0, 100, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
+		JMenu mnOpes = new JMenu("Opções");
+		menuBar.add(mnOpes);
+		
 		JMenuItem mntmConectar = new JMenuItem("Conectar");
-		menuBar.add(mntmConectar);
+		mnOpes.add(mntmConectar);
 		
 		JMenuItem mntmDesconectar = new JMenuItem("Desconectar");
-		menuBar.add(mntmDesconectar);
+		mnOpes.add(mntmDesconectar);
 		
 		JMenuItem mntmIniciarPartida = new JMenuItem("Iniciar Partida");
-		menuBar.add(mntmIniciarPartida);
+		mnOpes.add(mntmIniciarPartida);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new InterfaceMao();
@@ -63,8 +71,8 @@ public class InterfaceMesa extends JFrame{
 		lblNomeadversario_1.setBounds(12, 12, 109, 22);
 		panel_2.add(lblNomeadversario_1);
 		
-		JLabel label = new JLabel("imgCartas");
-		label.setBounds(51, 57, 70, 100);
-		panel_2.add(label);
+		JLabel labelImgCartas1 = new JLabel("imgCartas");
+		labelImgCartas1.setBounds(51, 57, 70, 100);
+		panel_2.add(labelImgCartas1);
 	}
 }
