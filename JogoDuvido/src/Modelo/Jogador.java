@@ -1,19 +1,19 @@
 package Modelo;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Jogador {
 	
-	protected List<Carta> mao;
+	protected ArrayList<Carta> mao;
 	protected String nome;
 	protected int qtdCartas;
 	
 	
 	
-	public void setMao(List<Carta> cartas) {
+	public void setMao(ArrayList<Carta> cartas) {
 		this.mao = cartas;
 	}
-	public List<Carta> getMao() {
+	public ArrayList<Carta> getMao() {
 		return mao;
 	}
 	
