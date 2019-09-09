@@ -7,8 +7,7 @@ public class Carta {
 	protected ValorDeCarta valor;
 	protected Naipe naipe;
 	protected boolean estaVirada;
-	protected ImageIcon frente;
-	protected ImageIcon verso;
+	protected ImageIcon imagem;
 	
 	public Carta() {
 
@@ -39,6 +38,12 @@ public class Carta {
 		this.estaVirada = estaVirada;
 	}
 	
+	public ImageIcon getImagem() {
+		return imagem;
+	}
 	
+	public void setImagem(ImageIcon imageIcon) {
+		this.imagem = imagem;
+	}
 
 }

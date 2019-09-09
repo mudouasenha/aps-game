@@ -19,8 +19,8 @@ public class AtorJogador {
 	
 	
 	
-	public ArrayList<Carta> leMaoLocal(){
-		return jogadorLocal.getMao();
-	}
+	//public ArrayList<Carta> leMaoLocal(){
+
+	//}
 
 }

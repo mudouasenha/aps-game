@@ -18,8 +18,9 @@ public class Main {
         mesa.ator.jogadorLocal = new Jogador();
         ArrayList<Carta> array = new ArrayList<>();
         array.add(carta1);
-        mesa.ator.jogadorLocal.setMao(array);
-        mesa.panel.atualizaMao(mesa.ator.leMaoLocal());
+        //mesa.atualizaCartas(array);
+        //mesa.ator.jogadorLocal.setMao(array);
+        //mesa.panel.atualizaMao(mesa.ator.leMaoLocal());
         mesa.lblNomeadversario.setText("Matheus");
         mesa.lblNomeadversario_1.setText("Samuel");
         
