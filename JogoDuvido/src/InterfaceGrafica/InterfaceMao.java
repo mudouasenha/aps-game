@@ -12,7 +12,7 @@ import java.awt.Color;
 import java.util.List;
 import javax.swing.JScrollPane;
 
-public class InterfaceMao extends JPanel{
+public class InterfaceMao extends JPanel {
 	
 	public InterfaceMao() {
 		super();
@@ -27,18 +27,13 @@ public class InterfaceMao extends JPanel{
 		scrollPane.setBounds(12, 12, 580, 100);
 		add(scrollPane);
 		
-		JList list = new JList();
-		list.setVisibleRowCount(1);
-		list.setBackground(new Color(0, 100, 0));
-		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		scrollPane.setViewportView(list);
+		JList cartas = new JList();
+		cartas.setVisibleRowCount(1);
+		cartas.setBackground(new Color(0, 100, 0));
+		cartas.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		scrollPane.setViewportView(cartas);
 		
 
 		DefaultListModel modeloLista = new DefaultListModel();
 	}
-	}
-	
-<<<<<<< HEAD
-=======
-
->>>>>>> 1d9f08ec6682d04fbe5d61310812afac1ac4a992
+}
