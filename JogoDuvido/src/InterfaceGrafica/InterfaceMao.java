@@ -18,15 +18,7 @@ public class InterfaceMao extends JPanel{
 		btnDeclarar.setBounds(605, 12, 102, 76);
 		add(btnDeclarar);
 		
-		DefaultListModel modeloLista = new DefaultListModel();
-		
-		JList list = new JList(modeloLista);
-		list.setVisibleRowCount(1);
-		list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		list.setBounds(12, 12, 581, 76);
-		add(list);
-	}
-	public List<ImageIcon> iconizador(List<Carta> deque){
 		
 	}
+	
 }
