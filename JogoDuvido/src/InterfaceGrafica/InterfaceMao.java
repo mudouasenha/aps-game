@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JList;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JScrollPane;
 
@@ -17,6 +18,12 @@ public class InterfaceMao extends JPanel {
 	JScrollPane scrollPane = null;
 	JList cartas = null;
 	DefaultListModel modeloLista = null;
+	
+   public void atualizaMao(ArrayList<ImageIcon> cartas) {
+		for(ImageIcon img : cartas) {
+			modeloLista.addElement(img);
+		}
+	  }
 	
 	public InterfaceMao() {
 		super();
@@ -40,5 +47,7 @@ public class InterfaceMao extends JPanel {
 		
 		modeloLista = new DefaultListModel();
 		
+		
 	}
+	
 }
