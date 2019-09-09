@@ -19,9 +19,7 @@ public class InterfaceMesa extends JFrame{
 		
 		
 		this.getContentPane().setBackground(new Color(0, 100, 0));
-        this.setSize(1800, 1000);
-        this.setVisible(true);
-        this.setResizable(true);
+
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
@@ -77,5 +75,9 @@ public class InterfaceMesa extends JFrame{
 		JLabel labelImgCartas1 = new JLabel("imgCartas");
 		labelImgCartas1.setBounds(51, 57, 70, 100);
 		panel_2.add(labelImgCartas1);
+		
+        this.setSize(1800, 1000);
+        this.setVisible(true);
+        this.setResizable(true);
 	}
 }
