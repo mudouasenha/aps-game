@@ -22,7 +22,7 @@ public class InterfaceMao extends JPanel {
 	JButton btnDeclarar = null;
 	JScrollPane scrollPane = null;
 	JList cartas = null;
-	DefaultListModel modeloLista = null;
+	DefaultListModel<ImageIcon> modeloLista = null;
 	private final Action action = new SwingAction();
 	
    public void atualizaMao(ArrayList<ImageIcon> deque) {
@@ -51,7 +51,7 @@ public class InterfaceMao extends JPanel {
 		cartas.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		scrollPane.setViewportView(cartas);
 		
-		modeloLista = new DefaultListModel();
+		modeloLista = new DefaultListModel<ImageIcon>();
 		atualizaMao(deque);
 		
 		
@@ -63,7 +63,7 @@ public class InterfaceMao extends JPanel {
 			putValue(SHORT_DESCRIPTION, "Declarar jogada de acordo com as cartas selecionadas");
 		}
 		public void actionPerformed(ActionEvent e) {
-			JOptionPane.showMessageDialog(null, "Voce declarou 4 valetes");
+			JOptionPane.showMessageDialog(null, "Voce declarou 4 ases");
 		}
 	}
 }

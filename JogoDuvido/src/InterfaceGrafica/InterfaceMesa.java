@@ -6,6 +6,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
