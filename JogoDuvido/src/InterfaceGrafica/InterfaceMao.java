@@ -3,6 +3,8 @@ package InterfaceGrafica;
 import javax.swing.JPanel;
 
 import Modelo.Carta;
+import Modelo.Naipe;
+import Modelo.ValorDeCarta;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -28,10 +30,11 @@ public class InterfaceMao extends JPanel {
    public void atualizaMao(ArrayList<ImageIcon> deque) {
 		for(ImageIcon img : deque) {
 			modeloLista.addElement(img);
+			cartas.repaint();
 		}
 	  }
    
-   public ArrayList<ImageIcon> iconizador(List<Carta> deque){
+   public ArrayList<ImageIcon> iconizador(ArrayList<Carta> deque){
 		
 		ArrayList<ImageIcon> imagens = new ArrayList<ImageIcon>();
 		for(Carta carta : deque) {
@@ -136,6 +139,16 @@ public class InterfaceMao extends JPanel {
 		atualizaMao(deque);
 		
 		
+		//apenas para demonstracao
+		ArrayList<Carta> mao = new ArrayList<Carta>();
+		mao.add(new Carta(ValorDeCarta.A, Naipe.OURO));
+		mao.add(new Carta(ValorDeCarta.A, Naipe.OURO));
+		mao.add(new Carta(ValorDeCarta.A, Naipe.OURO));
+		
+		atualizaMao(iconizador(mao));
+		
+		
+		
 	}
 	
 	private class SwingAction extends AbstractAction {
@@ -144,7 +157,8 @@ public class InterfaceMao extends JPanel {
 			putValue(SHORT_DESCRIPTION, "Declarar jogada de acordo com as cartas selecionadas");
 		}
 		public void actionPerformed(ActionEvent e) {
-			JOptionPane.showMessageDialog(null, "Voce declarou 4 ases");
+			int nroDeCartasSelecionadas = 4;
+			JOptionPane.showMessageDialog(null, "Voce declarou "+nroDeCartasSelecionadas+" ases");
 		}
 	}
 }
