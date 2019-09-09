@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 
 import Modelo.Carta;
+import Modelo.Jogador;
 import Modelo.Mesa;
 import Rede.AtorNetgames;
 
@@ -14,6 +15,7 @@ public class AtorJogador {
 	
 	protected AtorNetgames netgames;
 	protected Mesa mesaDeJogo;
+	protected Jogador jogadorLocal;
 	
 	public ArrayList<ImageIcon> iconizador(List<Carta> deque){
 		
@@ -94,6 +96,10 @@ public class AtorJogador {
 			}
 		}
 		return imagens;
+	}
+	
+	public ArrayList<ImageIcon> leMaoLocal(){
+		return iconizador(jogadorLocal.getMao());
 	}
 
 }

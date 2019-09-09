@@ -10,6 +10,9 @@ public class Jogador {
 	
 	
 	
+	public void setMao(List<Carta> cartas) {
+		this.mao = cartas;
+	}
 	public List<Carta> getMao() {
 		return mao;
 	}

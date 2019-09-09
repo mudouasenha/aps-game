@@ -25,13 +25,13 @@ public class InterfaceMao extends JPanel {
 	DefaultListModel modeloLista = null;
 	private final Action action = new SwingAction();
 	
-   public void atualizaMao(ArrayList<ImageIcon> cartas) {
-		for(ImageIcon img : cartas) {
+   public void atualizaMao(ArrayList<ImageIcon> deque) {
+		for(ImageIcon img : deque) {
 			modeloLista.addElement(img);
 		}
 	  }
 	
-	public InterfaceMao() {
+	public InterfaceMao(ArrayList<ImageIcon> deque) {
 		super();
 		setBackground(new Color(25, 25, 112));
 		setLayout(null);
@@ -52,6 +52,7 @@ public class InterfaceMao extends JPanel {
 		scrollPane.setViewportView(cartas);
 		
 		modeloLista = new DefaultListModel();
+		atualizaMao(deque);
 		
 		
 	}

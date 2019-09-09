@@ -22,7 +22,7 @@ public class InterfaceMesa extends JFrame{
 	protected JMenuItem mntmConectar = null;
 	protected JMenuItem mntmDesconectar = null;
 	protected JMenuItem mntmIniciarPartida = null;
-	protected JPanel panel = null;
+	protected InterfaceMao panel = null;
 	protected JButton btnDuvido = null;
 	protected JLabel lblMonte = null;
 	protected JPanel panel_1 = null;
@@ -53,7 +53,7 @@ public class InterfaceMesa extends JFrame{
 		getContentPane().setLayout(null);
 		
 		panel_1 = new JPanel();
-		panel = new InterfaceMao();
+		panel = new InterfaceMao(ator.leMaoLocal());
 		panel.setBounds(0, 329, 719, 100);
 		getContentPane().add(panel);
 		setJMenuBar(menuBar);
