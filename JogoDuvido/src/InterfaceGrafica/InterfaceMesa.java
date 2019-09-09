@@ -3,6 +3,7 @@ package InterfaceGrafica;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,6 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 import javax.swing.JMenu;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InterfaceMesa extends JFrame{
 	
@@ -45,6 +48,11 @@ public class InterfaceMesa extends JFrame{
 		menuBar.add(mnOpes);
 		
 		mntmConectar = new JMenuItem("Conectar");
+		mntmConectar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(rootPane, "Não foi possivel conectar");
+			}
+		});
 		mnOpes.add(mntmConectar);
 		
 		mntmDesconectar = new JMenuItem("Desconectar");
@@ -55,13 +63,18 @@ public class InterfaceMesa extends JFrame{
 		getContentPane().setLayout(null);
 		
 		panel_1 = new JPanel();
-		panel = new InterfaceMao(ator.leMaoLocal());
-		panel.setBounds(0, 329, 719, 100);
-		getContentPane().add(panel);
+		//panel = new InterfaceMao(ator.leMaoLocal());
+		//panel.setBounds(0, 329, 719, 100);
+		//getContentPane().add(panel);
 		setJMenuBar(menuBar);
 		
 		btnDuvido = new JButton("DUVIDO!");
-		btnDuvido.setBounds(269, 292, 114, 25);
+		btnDuvido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Voce perdeu o desafio");
+			}
+		});
+		btnDuvido.setBounds(319, 290, 114, 25);
 		getContentPane().add(btnDuvido);
 		
 		lblMonte = new JLabel("Monte");
@@ -79,12 +92,13 @@ public class InterfaceMesa extends JFrame{
 		panel_1.add(lblNomeadversario);
 		
 		lblImgcartas = new JLabel("imgCartas");
-		lblImgcartas.setBounds(12, 57, 70, 100);
+		lblImgcartas.setIcon(new ImageIcon(InterfaceMesa.class.getResource("/InterfaceGrafica/Imagens/carta-oculta.png")));
+		lblImgcartas.setBounds(12, 58, 63, 81);
 		panel_1.add(lblImgcartas);
 		
 		panel_2 = new JPanel();
 		panel_2.setBackground(Color.RED);
-		panel_2.setBounds(574, 12, 133, 169);
+		panel_2.setBounds(615, 12, 133, 169);
 		getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -93,6 +107,7 @@ public class InterfaceMesa extends JFrame{
 		panel_2.add(lblNomeadversario_1);
 		
 		labelImgCartas1 = new JLabel("imgCartas");
+		labelImgCartas1.setIcon(new ImageIcon(InterfaceMesa.class.getResource("/InterfaceGrafica/Imagens/carta-oculta.png")));
 		labelImgCartas1.setBounds(51, 57, 70, 100);
 		panel_2.add(labelImgCartas1);
 		
