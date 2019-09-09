@@ -2,17 +2,18 @@ package Modelo;
 
 public class Carta {
 	
-	protected int numero;
+	protected ValorDeCarta valor;
 	protected Naipe naipe;
 	protected boolean estaVirada;
 	
 	
 	
-	public int getNumero() {
-		return numero;
+	
+	public ValorDeCarta getValor() {
+		return valor;
 	}
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setValor(ValorDeCarta valor) {
+		this.valor = valor;
 	}
 	public Naipe getNaipe() {
 		return naipe;
