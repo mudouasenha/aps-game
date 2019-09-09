@@ -37,6 +37,10 @@ public class InterfaceMesa extends JFrame{
 	protected JPanel panel_2 = null;
 	protected JLabel labelImgCartas1 = null;
 	
+	public void atualizaCartas(ArrayList<JLabel> deque) {
+		panel.atualizaMao(deque);
+	}
+	
 	public InterfaceMesa(){
 		
 		
@@ -65,9 +69,9 @@ public class InterfaceMesa extends JFrame{
 		getContentPane().setLayout(null);
 		
 		panel_1 = new JPanel();
-		//panel = new InterfaceMao(ator.leMaoLocal());
-		//panel.setBounds(0, 329, 719, 100);
-		//getContentPane().add(panel);
+		panel = new InterfaceMao();
+		panel.setBounds(0, 329, 719, 100);
+		getContentPane().add(panel);
 		setJMenuBar(menuBar);
 		
 		btnDuvido = new JButton("DUVIDO!");
@@ -99,10 +103,10 @@ public class InterfaceMesa extends JFrame{
 		lblImgcartas.setBounds(12, 58, 63, 81);
 		panel_1.add(lblImgcartas);
 		
-		JLabel label = new JLabel("1");
-		label.setFont(new Font("Garuda", Font.BOLD, 20));
-		label.setBounds(87, 58, 34, 99);
-		panel_1.add(label);
+		JLabel labelQtdAdv = new JLabel("1");
+		labelQtdAdv.setFont(new Font("Garuda", Font.BOLD, 20));
+		labelQtdAdv.setBounds(87, 58, 34, 99);
+		panel_1.add(labelQtdAdv);
 		
 		panel_2 = new JPanel();
 		panel_2.setBackground(Color.RED);
@@ -119,18 +123,18 @@ public class InterfaceMesa extends JFrame{
 		labelImgCartas1.setBounds(51, 57, 70, 100);
 		panel_2.add(labelImgCartas1);
 		
-		JLabel label_1 = new JLabel("1");
-		label_1.setFont(new Font("Garuda", Font.BOLD, 20));
-		label_1.setBounds(12, 57, 34, 99);
-		panel_2.add(label_1);
+		JLabel labelQtdAdv1 = new JLabel("1");
+		labelQtdAdv1.setFont(new Font("Garuda", Font.BOLD, 20));
+		labelQtdAdv1.setBounds(12, 57, 34, 99);
+		panel_2.add(labelQtdAdv1);
 		
 		JLabel labelQtdMonte = new JLabel("0");
 		labelQtdMonte.setForeground(Color.CYAN);
 		labelQtdMonte.setBackground(Color.CYAN);
-		label_2.setFont(new Font("Garuda", Font.BOLD, 20));
-		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setBounds(319, 203, 87, 32);
-		getContentPane().add(label_2);
+		labelQtdMonte.setFont(new Font("Garuda", Font.BOLD, 20));
+		labelQtdMonte.setHorizontalAlignment(SwingConstants.CENTER);
+		labelQtdMonte.setBounds(319, 203, 87, 32);
+		getContentPane().add(labelQtdMonte);
 		
 		JTextPane txtpnUltimaJogada = new JTextPane();
 		txtpnUltimaJogada.setEditable(false);
@@ -138,6 +142,10 @@ public class InterfaceMesa extends JFrame{
 		txtpnUltimaJogada.setText("Ultima jogada");
 		txtpnUltimaJogada.setBounds(214, 12, 345, 32);
 		getContentPane().add(txtpnUltimaJogada);
+		
+		panel = new InterfaceMao();
+		
+		
 		
         this.setSize(760, 500);
         this.setVisible(true);
