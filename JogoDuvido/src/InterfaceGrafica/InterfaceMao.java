@@ -8,6 +8,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +62,7 @@ public class InterfaceMao extends JPanel {
 			putValue(SHORT_DESCRIPTION, "Declarar jogada de acordo com as cartas selecionadas");
 		}
 		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(null, "Voce declarou 4 valetes");
 		}
 	}
 }

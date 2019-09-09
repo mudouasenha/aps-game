@@ -25,7 +25,7 @@ public class AtorJogador {
 				switch(carta.getNaipe()) {
 				case OURO : {
 					switch(carta.getValor()) {
-					case A : imagens.add(new ImageIcon(getClass().getResource("1A.png")));
+					case A : imagens.add(new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png")));
 					case DOIS : imagens.add(new ImageIcon("path"));
 					case TRES : imagens.add(new ImageIcon("path"));
 					case QUATRO : imagens.add(new ImageIcon("path"));

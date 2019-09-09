@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 import javax.swing.JMenu;
+import javax.swing.ImageIcon;
 
 public class InterfaceMesa extends JFrame{
 	
@@ -62,7 +63,8 @@ public class InterfaceMesa extends JFrame{
 		getContentPane().add(btnDuvido);
 		
 		lblMonte = new JLabel("Monte");
-		lblMonte.setBounds(317, 136, 66, 15);
+		lblMonte.setIcon(new ImageIcon(InterfaceMesa.class.getResource("/InterfaceGrafica/Imagens/monte.png")));
+		lblMonte.setBounds(319, 105, 87, 88);
 		getContentPane().add(lblMonte);
 		
 		panel_1.setBackground(Color.YELLOW);
@@ -92,7 +94,7 @@ public class InterfaceMesa extends JFrame{
 		labelImgCartas1.setBounds(51, 57, 70, 100);
 		panel_2.add(labelImgCartas1);
 		
-        this.setSize(1800, 1000);
+        this.setSize(760, 500);
         this.setVisible(true);
         this.setResizable(true);
 	}
