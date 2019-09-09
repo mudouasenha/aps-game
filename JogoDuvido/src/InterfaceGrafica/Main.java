@@ -12,6 +12,7 @@ public class Main {
         ValorDeCarta valor = ValorDeCarta.A;
         carta1.setValor(valor);
         carta1.setNaipe(Naipe.OURO);
+        mesa.ator = new AtorJogador();
         mesa.lblNomeadversario.setText("Matheus");
         mesa.lblNomeadversario_1.setText("Samuel");
         

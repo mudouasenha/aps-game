@@ -12,7 +12,7 @@ import Rede.AtorNetgames;
 
 public class AtorJogador {
 	
-	protected AtorNetgames ator;
+	protected AtorNetgames netgames;
 	protected Mesa mesaDeJogo;
 	
 	public ArrayList<ImageIcon> iconizador(List<Carta> deque){
@@ -20,12 +20,12 @@ public class AtorJogador {
 		ArrayList<ImageIcon> imagens = new ArrayList<ImageIcon>();
 		for(Carta carta : deque) {
 			if (carta.isEstaVirada()) {
-				imagens.add(new ImageIcon("path"));
+				imagens.add(new ImageIcon(getClass().getResource("1A.jpg")));
 			}else {
 				switch(carta.getNaipe()) {
 				case OURO : {
 					switch(carta.getValor()) {
-					case A : imagens.add(new ImageIcon("path"));
+					case A : imagens.add(new ImageIcon(getClass().getResource("1A.png")));
 					case DOIS : imagens.add(new ImageIcon("path"));
 					case TRES : imagens.add(new ImageIcon("path"));
 					case QUATRO : imagens.add(new ImageIcon("path"));
