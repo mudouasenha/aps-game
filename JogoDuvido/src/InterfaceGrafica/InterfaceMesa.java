@@ -36,7 +36,6 @@ public class InterfaceMesa extends JFrame{
 		this.getContentPane().setBackground(new Color(0, 100, 0));
 
 		menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
 		
 		mnOpes = new JMenu("Opções");
 		
@@ -57,6 +56,7 @@ public class InterfaceMesa extends JFrame{
 		panel = new InterfaceMao();
 		panel.setBounds(0, 329, 719, 100);
 		getContentPane().add(panel);
+		setJMenuBar(menuBar);
 		
 		btnDuvido = new JButton("DUVIDO!");
 		btnDuvido.setBounds(269, 292, 114, 25);
