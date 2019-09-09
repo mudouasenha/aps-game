@@ -1,7 +1,11 @@
 package InterfaceGrafica;
 
 import javax.swing.JPanel;
+
+import Modelo.Carta;
+
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JList;
 import java.awt.Color;
@@ -27,6 +31,7 @@ public class InterfaceMao extends JPanel{
 		add(list);
 	}
 	public List<ImageIcon> iconizador(List<Carta> deque){
+		return null;
 		
 	}
 }

@@ -17,8 +17,11 @@ public class InterfaceMesa extends JFrame{
 	
 	public InterfaceMesa(){
 		
-		this.getContentPane().setBackground(new Color(0, 100, 0));
 		
+		this.getContentPane().setBackground(new Color(0, 100, 0));
+        this.setSize(1800, 1500);
+        this.setVisible(true);
+        this.setResizable(true);
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
