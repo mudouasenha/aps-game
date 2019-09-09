@@ -13,27 +13,32 @@ import java.util.List;
 import javax.swing.JScrollPane;
 
 public class InterfaceMao extends JPanel {
+	JButton btnDeclarar = null;
+	JScrollPane scrollPane = null;
+	JList cartas = null;
+	DefaultListModel modeloLista = null;
 	
 	public InterfaceMao() {
 		super();
 		setBackground(new Color(25, 25, 112));
 		setLayout(null);
 		
-		JButton btnDeclarar = new JButton("DECLARAR");
+		btnDeclarar = new JButton("DECLARAR");
 		btnDeclarar.setBounds(605, 12, 102, 76);
 		add(btnDeclarar);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 12, 580, 100);
 		add(scrollPane);
 		
-		JList cartas = new JList();
+		cartas = new JList();
 		cartas.setVisibleRowCount(1);
 		cartas.setBackground(new Color(0, 100, 0));
 		cartas.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		scrollPane.setViewportView(cartas);
+		add(cartas);
 		
-
-		DefaultListModel modeloLista = new DefaultListModel();
+		modeloLista = new DefaultListModel();
+		
 	}
 }

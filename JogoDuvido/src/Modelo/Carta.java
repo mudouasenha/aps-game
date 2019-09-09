@@ -1,13 +1,24 @@
 package Modelo;
 
+import javax.swing.ImageIcon;
+
 public class Carta {
 	
 	protected ValorDeCarta valor;
 	protected Naipe naipe;
 	protected boolean estaVirada;
+	protected ImageIcon frente;
+	protected ImageIcon verso;
 	
+	public Carta() {
+
+	}
 	
-	
+	public Carta(ValorDeCarta valor, Naipe naipe) {
+		estaVirada = false;
+		this.valor = valor;
+		this.naipe = naipe;
+	}
 	
 	public ValorDeCarta getValor() {
 		return valor;
