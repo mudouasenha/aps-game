@@ -10,6 +10,7 @@ import java.util.List;
 public class InterfaceMao extends JPanel{
 	
 	public InterfaceMao() {
+		super();
 		setBackground(new Color(25, 25, 112));
 		setLayout(null);
 		

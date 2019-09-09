@@ -17,7 +17,7 @@ public class InterfaceMesa extends JFrame{
 	
 	public InterfaceMesa(){
 		
-		getContentPane().setBackground(new Color(0, 100, 0));
+		this.getContentPane().setBackground(new Color(0, 100, 0));
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
