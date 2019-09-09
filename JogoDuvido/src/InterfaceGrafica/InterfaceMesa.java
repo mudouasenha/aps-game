@@ -16,6 +16,8 @@ import javax.swing.JMenu;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class InterfaceMesa extends JFrame{
 	
@@ -78,8 +80,9 @@ public class InterfaceMesa extends JFrame{
 		getContentPane().add(btnDuvido);
 		
 		lblMonte = new JLabel("Monte");
+		lblMonte.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMonte.setIcon(new ImageIcon(InterfaceMesa.class.getResource("/InterfaceGrafica/Imagens/monte.png")));
-		lblMonte.setBounds(319, 105, 87, 88);
+		lblMonte.setBounds(319, 105, 87, 90);
 		getContentPane().add(lblMonte);
 		
 		panel_1.setBackground(Color.YELLOW);
@@ -96,6 +99,11 @@ public class InterfaceMesa extends JFrame{
 		lblImgcartas.setBounds(12, 58, 63, 81);
 		panel_1.add(lblImgcartas);
 		
+		JLabel label = new JLabel("1");
+		label.setFont(new Font("Garuda", Font.BOLD, 20));
+		label.setBounds(87, 58, 34, 99);
+		panel_1.add(label);
+		
 		panel_2 = new JPanel();
 		panel_2.setBackground(Color.RED);
 		panel_2.setBounds(615, 12, 133, 169);
@@ -110,6 +118,26 @@ public class InterfaceMesa extends JFrame{
 		labelImgCartas1.setIcon(new ImageIcon(InterfaceMesa.class.getResource("/InterfaceGrafica/Imagens/carta-oculta.png")));
 		labelImgCartas1.setBounds(51, 57, 70, 100);
 		panel_2.add(labelImgCartas1);
+		
+		JLabel label_1 = new JLabel("1");
+		label_1.setFont(new Font("Garuda", Font.BOLD, 20));
+		label_1.setBounds(12, 57, 34, 99);
+		panel_2.add(label_1);
+		
+		JLabel labelQtdMonte = new JLabel("0");
+		labelQtdMonte.setForeground(Color.CYAN);
+		labelQtdMonte.setBackground(Color.CYAN);
+		label_2.setFont(new Font("Garuda", Font.BOLD, 20));
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setBounds(319, 203, 87, 32);
+		getContentPane().add(label_2);
+		
+		JTextPane txtpnUltimaJogada = new JTextPane();
+		txtpnUltimaJogada.setEditable(false);
+		txtpnUltimaJogada.setBackground(Color.GRAY);
+		txtpnUltimaJogada.setText("Ultima jogada");
+		txtpnUltimaJogada.setBounds(214, 12, 345, 32);
+		getContentPane().add(txtpnUltimaJogada);
 		
         this.setSize(760, 500);
         this.setVisible(true);
