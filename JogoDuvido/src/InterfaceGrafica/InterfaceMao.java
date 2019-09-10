@@ -38,9 +38,9 @@ public class InterfaceMao extends JPanel {
 	  }
    
    
-   public ArrayList<JLabel> iconizador(ArrayList<Carta> deque){
+   public ArrayList<Carta> iconizador(ArrayList<Carta> deque){
 		
-		ArrayList<JLabel> imagens = new ArrayList<JLabel>();
+		//ArrayList<JLabel> cartas = new ArrayList<JLabel>();
 		for(Carta carta : deque) {
 			if (carta.isEstaVirada()) {
 				carta.setImagem((new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png"))));
@@ -48,7 +48,7 @@ public class InterfaceMao extends JPanel {
 				switch(carta.getNaipe()) {
 				case OURO : {
 					switch(carta.getValor()) {
-					case A : carta.setImagem((new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png"))));
+					case A :  carta.setImagem((new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png"))));
 					case DOIS : carta.setImagem((new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png"))));
 					case TRES : carta.setImagem((new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png"))));
 					case QUATRO : carta.setImagem((new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png"))));
@@ -116,9 +116,27 @@ public class InterfaceMao extends JPanel {
 			
 			}
 		}
-		return imagens;
+		return deque;
 	}
-	
+
+   public void adicionaItensLista(ArrayList<JLabel> cartas) {
+   for (int i = 0; i < cartas.size(); i++) {
+		modeloLista.add(i, cartas.get(i));
+		}
+   }
+   
+   public ArrayList<JLabel> laborizador (ArrayList<Carta> deque) {
+	   
+	   ArrayList<JLabel> cartas = new ArrayList<JLabel>();
+	   for(Carta carta : deque) {
+		   JLabel cartaLabel = new JLabel();
+		   cartaLabel.setIcon(carta.getImagem());
+		   cartaLabel.setText(carta.getNaipe().toString() + "" + carta.getValor().toString());
+		   cartas.add(cartaLabel);
+	   }
+	   return cartas;
+	   
+   }
 	public InterfaceMao() {
 		super();
 		setBackground(new Color(25, 25, 112));
@@ -151,7 +169,6 @@ public class InterfaceMao extends JPanel {
 		
 		JLabel carta1 = new JLabel("A_OURO");
 		carta1.setIcon(new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png")));
-		modeloLista.addElement(carta1);
 		
 		scrollPane = new JScrollPane(cartas);
 		scrollPane.setBounds(12, 12, 580, 100);
