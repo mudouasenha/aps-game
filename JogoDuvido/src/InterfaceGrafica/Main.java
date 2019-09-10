@@ -22,14 +22,12 @@ public class Main {
 		mao.add(new Carta(valor, Naipe.OURO));
 		mao.add(new Carta(valor, Naipe.OURO));
         
-		System.out.println(mesa.iconizar(mao));
 		
 		ArrayList<JLabel> cartas = new ArrayList<JLabel>(mesa.laborizar(mao));
 		
 		mesa.adicionarItensLista(cartas);
 		
 		mesa.atualizaCartas(cartas);
-		System.out.println(cartas);
         
         mesa.ator = new AtorJogador();
         mesa.ator.jogadorLocal = new Jogador();

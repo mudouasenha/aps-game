@@ -62,7 +62,6 @@ public class InterfaceMao extends JPanel {
 		
 		
 		cartas = new JList(modeloLista);
-		System.out.println("modelolista:" + modeloLista);
 		cartas.setVisibleRowCount(1);
 		cartas.setBackground(new Color(0, 100, 0));
 		cartas.setLayoutOrientation(JList.HORIZONTAL_WRAP);
@@ -88,10 +87,13 @@ public class InterfaceMao extends JPanel {
 	}
 	
 	public ArrayList<JLabel> atualizaMao(ArrayList<JLabel> deque) {
+		int i = 0;
 		for(JLabel carta : deque) {
 			modeloLista.addElement(carta);
-			cartas.repaint();
+			cartas.add(modeloLista.get(i++));
 		}
+		cartas.repaint();
+		
 		return deque;
 	  }
    
