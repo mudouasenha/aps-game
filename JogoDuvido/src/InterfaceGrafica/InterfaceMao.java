@@ -42,10 +42,7 @@ public class InterfaceMao extends JPanel {
 		
 		modeloLista = new DefaultListModel<JLabel>();
 
-		cartas = new JList(modeloLista);
-		cartas.setVisibleRowCount(1);
-		cartas.setBackground(new Color(0, 100, 0));
-		cartas.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+
 		
 		
 		//atualizaMao(deque);
@@ -58,9 +55,18 @@ public class InterfaceMao extends JPanel {
 		mao.add(new Carta(ValorDeCarta.A, Naipe.OURO));
 		
 		
-		
 		JLabel carta1 = new JLabel("A_OURO");
 		carta1.setIcon(new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png")));
+		
+		modeloLista.addElement(carta1);
+		
+		
+		cartas = new JList(modeloLista);
+		System.out.println("modelolista:" + modeloLista);
+		cartas.setVisibleRowCount(1);
+		cartas.setBackground(new Color(0, 100, 0));
+		cartas.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		
 		
 		scrollPane = new JScrollPane(cartas);
 		scrollPane.setBounds(12, 12, 580, 100);
@@ -189,4 +195,7 @@ public class InterfaceMao extends JPanel {
 	   return cartas;
 	   
    }
+
+
+
 }

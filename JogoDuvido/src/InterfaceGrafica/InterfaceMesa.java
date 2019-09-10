@@ -39,21 +39,7 @@ public class InterfaceMesa extends JFrame{
 	protected JPanel panel_2 = null;
 	protected JLabel labelImgCartas1 = null;
 	
-	public ArrayList<JLabel> atualizaCartas(ArrayList<JLabel> deque) {
-		return panel.atualizaMao(deque);
-	}
-	
-	public ArrayList<Carta> iconizar(ArrayList<Carta> deque) {
-		return panel.iconizador(deque);
-	}
-	
-	public ArrayList<JLabel> laborizar(ArrayList<Carta> deque) {
-		return panel.laborizador(deque);
-	}
-	
-	public void adicionarItensLista(ArrayList<JLabel> cartas) {
-		panel.adicionaItensLista(cartas);
-	}
+
 	
 	public InterfaceMesa(){
 		
@@ -170,9 +156,24 @@ public class InterfaceMesa extends JFrame{
 		panel = new InterfaceMao();
 		
 		
-		
         this.setSize(760, 500);
         this.setVisible(true);
         this.setResizable(true);
+	}
+	
+	public ArrayList<JLabel> atualizaCartas(ArrayList<JLabel> deque) {
+		return panel.atualizaMao(deque);
+	}
+	
+	public ArrayList<Carta> iconizar(ArrayList<Carta> deque) {
+		return panel.iconizador(deque);
+	}
+	
+	public ArrayList<JLabel> laborizar(ArrayList<Carta> deque) {
+		return panel.laborizador(deque);
+	}
+	
+	public void adicionarItensLista(ArrayList<JLabel> cartas) {
+		panel.adicionaItensLista(cartas);
 	}
 }
