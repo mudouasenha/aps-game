@@ -19,6 +19,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import Modelo.Carta;
+
 public class InterfaceMesa extends JFrame{
 	
 	protected AtorJogador ator;
@@ -37,8 +39,20 @@ public class InterfaceMesa extends JFrame{
 	protected JPanel panel_2 = null;
 	protected JLabel labelImgCartas1 = null;
 	
-	public void atualizaCartas(ArrayList<JLabel> deque) {
-		panel.atualizaMao(deque);
+	public ArrayList<JLabel> atualizaCartas(ArrayList<JLabel> deque) {
+		return panel.atualizaMao(deque);
+	}
+	
+	public ArrayList<Carta> iconizar(ArrayList<Carta> deque) {
+		return panel.iconizador(deque);
+	}
+	
+	public ArrayList<JLabel> laborizar(ArrayList<Carta> deque) {
+		return panel.laborizador(deque);
+	}
+	
+	public void adicionarItensLista(ArrayList<JLabel> cartas) {
+		panel.adicionaItensLista(cartas);
 	}
 	
 	public InterfaceMesa(){

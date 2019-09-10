@@ -2,6 +2,8 @@ package InterfaceGrafica;
 
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
 import Modelo.Carta;
 import Modelo.Jogador;
 import Modelo.Naipe;
@@ -14,13 +16,23 @@ public class Main {
         ValorDeCarta valor = ValorDeCarta.A;
         carta1.setValor(valor);
         carta1.setNaipe(Naipe.OURO);
+        
+        ArrayList<Carta> mao = new ArrayList<Carta>();
+		mao.add(new Carta(valor, Naipe.OURO));
+		mao.add(new Carta(valor, Naipe.OURO));
+		mao.add(new Carta(valor, Naipe.OURO));
+        
+		System.out.println(mesa.iconizar(mao));
+		
+		ArrayList<JLabel> cartas = new ArrayList<JLabel>(mesa.laborizar(mao));
+		
+		mesa.adicionarItensLista(cartas);
+		
+		mesa.atualizaCartas(cartas);
+		System.out.println(cartas);
+        
         mesa.ator = new AtorJogador();
         mesa.ator.jogadorLocal = new Jogador();
-        ArrayList<Carta> array = new ArrayList<>();
-        array.add(carta1);
-        //mesa.atualizaCartas(array);
-        //mesa.ator.jogadorLocal.setMao(array);
-        //mesa.panel.atualizaMao(mesa.ator.leMaoLocal());
         mesa.lblNomeadversario.setText("Matheus");
         mesa.lblNomeadversario_1.setText("Samuel");
         

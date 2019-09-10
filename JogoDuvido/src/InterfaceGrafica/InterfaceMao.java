@@ -29,12 +29,64 @@ public class InterfaceMao extends JPanel {
 	DefaultListModel<JLabel> modeloLista = null;
 	private final Action action = new SwingAction();
  
+
+   public InterfaceMao() {
+		super();
+		setBackground(new Color(25, 25, 112));
+		setLayout(null);
+		
+		btnDeclarar = new JButton("DECLARAR");
+		btnDeclarar.setAction(action);
+		btnDeclarar.setBounds(605, 12, 102, 76);
+		add(btnDeclarar);
+		
+		modeloLista = new DefaultListModel<JLabel>();
+
+		cartas = new JList(modeloLista);
+		cartas.setVisibleRowCount(1);
+		cartas.setBackground(new Color(0, 100, 0));
+		cartas.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+		
+		
+		//atualizaMao(deque);
+		
+		
+		//apenas para demonstracao
+		ArrayList<Carta> mao = new ArrayList<Carta>();
+		mao.add(new Carta(ValorDeCarta.A, Naipe.OURO));
+		mao.add(new Carta(ValorDeCarta.A, Naipe.OURO));
+		mao.add(new Carta(ValorDeCarta.A, Naipe.OURO));
+		
+		
+		
+		JLabel carta1 = new JLabel("A_OURO");
+		carta1.setIcon(new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png")));
+		
+		scrollPane = new JScrollPane(cartas);
+		scrollPane.setBounds(12, 12, 580, 100);
+		scrollPane.setViewportView(cartas);
+		scrollPane.setBackground(Color.WHITE);
+		add(scrollPane);
+		
+	}
 	
-   public void atualizaMao(ArrayList<JLabel> deque) {
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "DECLARAR");
+			putValue(SHORT_DESCRIPTION, "Declarar jogada de acordo com as cartas selecionadas");
+		}
+		public void actionPerformed(ActionEvent e) {
+			int nroDeCartasSelecionadas = 4;
+			JOptionPane.showMessageDialog(null, "Voce declarou "+nroDeCartasSelecionadas+" ases");
+		}
+	}
+	
+	public ArrayList<JLabel> atualizaMao(ArrayList<JLabel> deque) {
 		for(JLabel carta : deque) {
 			modeloLista.addElement(carta);
 			cartas.repaint();
 		}
+		return deque;
 	  }
    
    
@@ -137,58 +189,4 @@ public class InterfaceMao extends JPanel {
 	   return cartas;
 	   
    }
-	public InterfaceMao() {
-		super();
-		setBackground(new Color(25, 25, 112));
-		setLayout(null);
-		
-		btnDeclarar = new JButton("DECLARAR");
-		btnDeclarar.setAction(action);
-		btnDeclarar.setBounds(605, 12, 102, 76);
-		add(btnDeclarar);
-		
-		modeloLista = new DefaultListModel<JLabel>();
-
-		cartas = new JList(modeloLista);
-		cartas.setVisibleRowCount(1);
-		cartas.setBackground(new Color(0, 100, 0));
-		cartas.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		
-		
-		//atualizaMao(deque);
-		
-		
-		//apenas para demonstracao
-		ArrayList<Carta> mao = new ArrayList<Carta>();
-		mao.add(new Carta(ValorDeCarta.A, Naipe.OURO));
-		mao.add(new Carta(ValorDeCarta.A, Naipe.OURO));
-		mao.add(new Carta(ValorDeCarta.A, Naipe.OURO));
-		
-		atualizaMao(iconizador(mao));
-		
-		
-		JLabel carta1 = new JLabel("A_OURO");
-		carta1.setIcon(new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png")));
-		
-		scrollPane = new JScrollPane(cartas);
-		scrollPane.setBounds(12, 12, 580, 100);
-		scrollPane.setViewportView(cartas);
-		scrollPane.setBackground(Color.WHITE);
-		add(scrollPane);
-		
-		
-		
-		
-	}
-	
-	private class SwingAction extends AbstractAction {
-		public SwingAction() {
-			putValue(NAME, "DECLARAR");
-			putValue(SHORT_DESCRIPTION, "Declarar jogada de acordo com as cartas selecionadas");
-		}
-		public void actionPerformed(ActionEvent e) {
-			int nroDeCartasSelecionadas = 4;
-			JOptionPane.showMessageDialog(null, "Voce declarou "+nroDeCartasSelecionadas+" ases");
-		}
-	}
 }
