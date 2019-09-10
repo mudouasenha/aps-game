@@ -62,15 +62,25 @@ public class InterfaceMesa extends JFrame{
 		mnOpes.add(mntmConectar);
 		
 		mntmDesconectar = new JMenuItem("Desconectar");
+		mntmDesconectar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(rootPane, "Voce precisa estar conectado para desconectar");
+			}
+		});
 		mnOpes.add(mntmDesconectar);
 		
 		mntmIniciarPartida = new JMenuItem("Iniciar Partida");
+		mntmIniciarPartida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(rootPane, "Voce precisa estar conectado para desconectar");
+			}
+		});
 		mnOpes.add(mntmIniciarPartida);
 		getContentPane().setLayout(null);
 		
 		panel_1 = new JPanel();
 		panel = new InterfaceMao();
-		panel.setBounds(0, 329, 719, 100);
+		panel.setBounds(12, 327, 719, 100);
 		getContentPane().add(panel);
 		setJMenuBar(menuBar);
 		
