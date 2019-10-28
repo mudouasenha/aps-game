@@ -20,6 +20,9 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import Modelo.Carta;
+import Modelo.Mesa;
+import Rede.AtorNetgames;
+
 
 public class InterfaceMesa extends JFrame{
 	
@@ -38,12 +41,16 @@ public class InterfaceMesa extends JFrame{
 	protected JLabel lblImgcartas = null;
 	protected JPanel panel_2 = null;
 	protected JLabel labelImgCartas1 = null;
-	
+
+	protected Mesa mesa;
+	protected AtorJogador atorJogador;
+	protected AtorNetgames atorNetGames;
 
 	
-	public InterfaceMesa(){
-		
-		
+	public InterfaceMesa(AtorJogador atorJogador){
+
+		this.atorJogador = atorJogador;
+		atorNetGames = new AtorNetgames(mesa);
 		this.getContentPane().setBackground(new Color(0, 100, 0));
 
 		menuBar = new JMenuBar();
@@ -55,22 +62,33 @@ public class InterfaceMesa extends JFrame{
 		
 		mntmConectar = new JMenuItem("Conectar");
 		mntmConectar.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(rootPane, "Não foi possivel conectar");
+				if(atorJogador.conectar()) {
+					JOptionPane.showMessageDialog(rootPane, "Conectado!");
+				} else {
+					JOptionPane.showMessageDialog(rootPane, "Não foi possivel conectar");
+				}
 			}
 		});
 		mnOpes.add(mntmConectar);
 		
 		mntmDesconectar = new JMenuItem("Desconectar");
 		mntmDesconectar.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(rootPane, "Voce precisa estar conectado para desconectar");
+				if (atorNetGames.desconectar()) {
+					JOptionPane.showMessageDialog(rootPane, "Desconectado");
+				} else {
+					JOptionPane.showMessageDialog(rootPane, "Voce precisa estar conectado para desconectar");
+				}
 			}
 		});
 		mnOpes.add(mntmDesconectar);
 		
 		mntmIniciarPartida = new JMenuItem("Iniciar Partida");
 		mntmIniciarPartida.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(rootPane, "Voce precisa estar conectado para desconectar");
 			}
@@ -86,6 +104,7 @@ public class InterfaceMesa extends JFrame{
 		
 		btnDuvido = new JButton("DUVIDO!");
 		btnDuvido.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Voce perdeu o desafio");
 			}

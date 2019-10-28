@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 
-import Modelo.Carta;
-import Modelo.Jogador;
-import Modelo.Naipe;
-import Modelo.ValorDeCarta;
+import Modelo.*;
+import InterfaceGrafica.AtorJogador;
 
 public class Main {
     public static void main(String[] args) {
-        InterfaceMesa mesa = new InterfaceMesa();
+
+        Mesa mesa = new Mesa();
+        AtorJogador atorJogador = new AtorJogador(mesa);
+        InterfaceMesa interfaceMesa = new InterfaceMesa(atorJogador);
         Carta carta1 = new Carta();
         ValorDeCarta valor = ValorDeCarta.A;
         carta1.setValor(valor);
@@ -23,16 +24,16 @@ public class Main {
 		mao.add(new Carta(valor, Naipe.OURO));
         
 		
-		ArrayList<JLabel> cartas = new ArrayList<JLabel>(mesa.laborizar(mao));
+		ArrayList<JLabel> cartas = new ArrayList<JLabel>(interfaceMesa.laborizar(mao));
 		
-		mesa.adicionarItensLista(cartas);
+		interfaceMesa.adicionarItensLista(cartas);
 		
-		mesa.atualizaCartas(cartas);
+		interfaceMesa.atualizaCartas(cartas);
         
-        mesa.ator = new AtorJogador();
-        mesa.ator.jogadorLocal = new Jogador();
-        mesa.lblNomeadversario.setText("Matheus");
-        mesa.lblNomeadversario_1.setText("Samuel");
+        interfaceMesa.ator = new AtorJogador(mesa);
+        interfaceMesa.ator.jogadorLocal = new Jogador("Matheus");
+        interfaceMesa.lblNomeadversario.setText("Matheus");
+        interfaceMesa.lblNomeadversario_1.setText("Samuel");
         
         
     }

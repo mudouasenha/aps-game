@@ -7,6 +7,7 @@ public class Jogador {
 	protected ArrayList<Carta> mao;
 	protected String nome;
 	protected int qtdCartas;
+	protected boolean daVez;
 	
 	
 	
@@ -29,7 +30,12 @@ public class Jogador {
 	public void setQtdCartas(int qtdCartas) {
 		this.qtdCartas = qtdCartas;
 	}
+	public boolean isDaVez() { return daVez; }
+	public void setDaVez(boolean daVez) { this.daVez = daVez;	}
 	
-	
+	public Jogador (String nome) {
+		this.nome = nome;
+		this.daVez = false;
+	}
 
 }
