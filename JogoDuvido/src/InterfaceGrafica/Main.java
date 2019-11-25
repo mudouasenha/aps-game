@@ -34,6 +34,8 @@ public class Main {
         interfaceMesa.ator.jogadorLocal = new Jogador("Matheus");
         interfaceMesa.lblNomeadversario.setText("Matheus");
         interfaceMesa.lblNomeadversario_1.setText("Samuel");
+
+
         
         
     }

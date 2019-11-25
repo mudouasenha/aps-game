@@ -14,6 +14,7 @@ public class Mesa implements Jogada {
 	protected AtorNetgames atorNetGames;
 	protected AtorJogador atorJogador;
 	protected boolean jogoEmAndamento;
+	protected String servidor = "";
 	
 	
 	public int getNumeroDaRodada() {
@@ -34,6 +35,9 @@ public class Mesa implements Jogada {
 		this.atorJogador = new AtorJogador(this);
 		this.conectado = false;
 		this.jogoEmAndamento = false;
+	}
+	public void setServidor(String servidor) {
+		this.servidor = servidor;
 	}
 
 	public boolean conectar() {

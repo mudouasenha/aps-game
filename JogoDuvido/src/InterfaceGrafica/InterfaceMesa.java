@@ -1,23 +1,13 @@
 package InterfaceGrafica;
 
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTextPane;
-import javax.swing.JMenu;
-import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 
 import Modelo.Carta;
 import Modelo.Mesa;
@@ -41,23 +31,52 @@ public class InterfaceMesa extends JFrame{
 	protected JLabel lblImgcartas = null;
 	protected JPanel panel_2 = null;
 	protected JLabel labelImgCartas1 = null;
+	protected JMenuItem mntmLocalhost = null;
+	protected JMenuItem mntmUFSC = null;
+	protected JMenu menuHost = null;
 
 	protected Mesa mesa;
 	protected AtorJogador atorJogador;
 	protected AtorNetgames atorNetGames;
 
+
+
 	
 	public InterfaceMesa(AtorJogador atorJogador){
 
 		this.atorJogador = atorJogador;
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		atorNetGames = new AtorNetgames(mesa);
 		this.getContentPane().setBackground(new Color(0, 100, 0));
 
 		menuBar = new JMenuBar();
-		
+
 		mnOpes = new JMenu("Opções");
+		menuHost = new JMenu("Host");
+
+
+
+		mntmLocalhost = new JMenuItem("localhost");
+		mntmLocalhost.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				mesa.setServidor("localhost");
+			}
+		});
+		menuHost.add(mntmLocalhost);
+
+
+		mntmUFSC = new JMenuItem("labsoft");
+		mntmUFSC.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				mesa.setServidor("netgames.labsoft.ufsc.br");
+			}
+		});
+		menuHost.add(mntmUFSC);
+
 		
-		menuBar = new JMenuBar();
+		mnOpes.add(menuHost);
 		menuBar.add(mnOpes);
 		
 		mntmConectar = new JMenuItem("Conectar");
