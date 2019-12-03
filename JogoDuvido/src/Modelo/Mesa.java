@@ -3,6 +3,7 @@ package Modelo;
 import InterfaceGrafica.AtorJogador;
 import Rede.AtorNetgames;
 import br.ufsc.inf.leobr.cliente.Jogada;
+import java.util.List;
 
 public class Mesa implements Jogada {
 	
@@ -23,7 +24,12 @@ public class Mesa implements Jogada {
 	public void setNumeroDaRodada(int numeroDaRodada) {
 		this.numeroDaRodada = numeroDaRodada;
 	}
-	public int getIDJogadorAtual() { return 1;}
+	public Jogador getJogadorAtual() {
+		int id = -1;
+		// ...........
+		// ...........
+		return participantes[id];
+	}
 	public Monte getMonte() {
 		return monte;
 	}
@@ -80,6 +86,14 @@ public class Mesa implements Jogada {
 	public void repassaCartas() {
 
 	}
+
+	public int desafiaJogada() {
+		//.......
+		boolean blefou = false;
+		List<Carta> cartas = monte.esvaziaMonte();
+		return 12;
+	}
+
 
 
 	public void iniciarNovaPartida(int ordem) {

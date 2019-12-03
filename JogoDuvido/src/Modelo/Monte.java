@@ -22,6 +22,8 @@ public class Monte {
 		this.ultimaJogada = ultimaJogada;
 	}
 	public List<Carta> esvaziaMonte() {
-
+		List<Carta> cartas = getConteudo();
+		setConteudo(null); // mudar;
+		return cartas;
     }
 }

@@ -28,12 +28,22 @@ public boolean conectar() {
 	return this.mesaDeJogo.conectar();
 }
 
+public Jogador getJogadorLocal() {
+	return jogadorLocal;
+}
+
 public boolean desconectar() {
 	return this.mesaDeJogo.desconectar();
 }
 
 public void duvidar() {
-	Jogador atual = this.mesaDeJogo.getIDJogadorAtual();
+	Jogador atual = this.mesaDeJogo.getJogadorAtual();
+	int status = mesaDeJogo.desafiaJogada();
+	if(status == 12) {
+		Jogador perdedor = this.mesaDeJogo.getJogadorAtual();
+	} else {
+		Jogador perdedor = this.getJogadorLocal();
+	}
 }
 	//public ArrayList<Carta> leMaoLocal(){
 

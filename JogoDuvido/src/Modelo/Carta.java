@@ -1,6 +1,7 @@
 package Modelo;
 
 import javax.swing.ImageIcon;
+import java.util.List;
 
 public class Carta {
 	

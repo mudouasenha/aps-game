@@ -8,6 +8,7 @@ public class Jogador {
 	protected String nome;
 	protected int qtdCartas;
 	protected boolean daVez;
+	protected int id;
 	
 	
 	
@@ -32,6 +33,8 @@ public class Jogador {
 	}
 	public boolean isDaVez() { return daVez; }
 	public void setDaVez(boolean daVez) { this.daVez = daVez;	}
+	public int getId() { return id;}
+	public void setId(int id) {this.id = id;}
 	
 	public Jogador (String nome) {
 		this.nome = nome;
