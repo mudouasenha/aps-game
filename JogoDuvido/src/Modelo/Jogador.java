@@ -36,9 +36,10 @@ public class Jogador {
 	public int getId() { return id;}
 	public void setId(int id) {this.id = id;}
 	
-	public Jogador (String nome) {
+	public Jogador (String nome, int id) {
 		this.nome = nome;
-		this.daVez = false;
+		this.id = id;
+		//this.daVez = false;
 	}
 
 

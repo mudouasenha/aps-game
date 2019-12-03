@@ -7,6 +7,8 @@ import br.ufsc.inf.leobr.cliente.OuvidorProxy;
 import br.ufsc.inf.leobr.cliente.Proxy;
 import br.ufsc.inf.leobr.cliente.exception.*;
 
+import javax.swing.*;
+
 public class AtorNetgames implements OuvidorProxy {
     private static final long serialVersionUID = 1L;
     protected Proxy proxy;
@@ -69,7 +71,15 @@ public class AtorNetgames implements OuvidorProxy {
 
     @Override
     public void iniciarNovaPartida(Integer ordem) {
-        this.mesa.iniciarNovaPartida(ordem);
+
+        if(ordem == 1){
+            String adv1 = proxy.obterNomeAdversario(2);
+            String adv2 = proxy.obterNomeAdversario(3);
+
+            mesa.iniciarNovaPartida(adv1, adv2);
+        }
+
+
     }
 
     @Override
@@ -98,4 +108,11 @@ public class AtorNetgames implements OuvidorProxy {
         return;
     }
 
+    public void enviarJogada(Mesa estadoMesa)  {
+        try {
+            proxy.enviaJogada(estadoMesa);
+        } catch (NaoJogandoException e) {
+            System.out.println("Não está jogando");
+        }
+    }
 }

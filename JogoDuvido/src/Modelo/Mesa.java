@@ -54,7 +54,7 @@ public class Mesa implements Jogada {
 		if(!this.conectado) {
 			String servidor = "localhost";
 			String nomeJogador = "matheus";
-			this.jogador = new Jogador(nomeJogador);
+			this.jogador = new Jogador(nomeJogador, 1);
 			boolean conectado = this.atorNetGames.conectar(servidor, nomeJogador);
 			if (conectado) {
 				this.conectado = true;
@@ -95,7 +95,7 @@ public class Mesa implements Jogada {
 			mao.add(c);
 		}
 		perdedor.setMao(mao);
-		
+
 
 	}
 
@@ -116,7 +116,7 @@ public class Mesa implements Jogada {
 
 		repassaCartas(idPerdedor, cartas);
 
-		//envia jogada
+		enviaJogada();
 
 		return status;
 	}
@@ -125,7 +125,7 @@ public class Mesa implements Jogada {
 		int maoStatus = analisaMao(cartas);
 		if(maoStatus==18){
 			jogaNoMonte(cartas);
-			//envia jogada
+			enviaJogada();
 		}
 		return maoStatus;
 	}
@@ -156,10 +156,49 @@ public class Mesa implements Jogada {
 	}
 
 
-	public void iniciarNovaPartida(int ordem) {
+	public void iniciarPartida() {
 
 	}
 
 	public void receberJogada(Mesa jogada) {
+	}
+
+	public void enviaJogada(){
+		atorNetGames.enviarJogada(this);
+	}
+
+	public void iniciarNovaPartida(String adv1, String adv2) {
+		limpaMesa();
+
+		Carta[] baralho = criaBaralhoEmbaralhado();
+
+		Carta[] mao ;
+
+		participantes[0] = new Jogador(atorJogador.getJogadorLocal().getNome(), 1);
+		mao = distribuiCartasParaJogador(baralho);
+		participantes[0].setMao(null);
+
+		participantes[1] = new Jogador(adv1, 2);
+		mao = distribuiCartasParaJogador(baralho);
+		participantes[1].setMao(null);
+
+		participantes[2] = new Jogador(adv2, 3);
+		mao = distribuiCartasParaJogador(baralho);
+		participantes[2].setMao(null);
+
+		enviaJogada();
+
+
+	}
+
+	private Carta[] distribuiCartasParaJogador(Carta[] baralho) {
+		return null;
+	}
+
+	private Carta[] criaBaralhoEmbaralhado() {
+		return null;
+	}
+
+	private void limpaMesa() {
 	}
 }
