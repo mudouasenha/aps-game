@@ -16,6 +16,7 @@ public class Mesa implements Jogada {
 	protected AtorJogador atorJogador;
 	protected boolean jogoEmAndamento;
 	protected String servidor = "";
+	protected int idDaVez;
 	
 	
 	public int getNumeroDaRodada() {
@@ -94,6 +95,39 @@ public class Mesa implements Jogada {
 		return 12;
 	}
 
+	public int realizaJogada(Carta[] cartas){
+		int maoStatus = analisaMao(cartas);
+		if(maoStatus==18){
+			jogaNoMonte(cartas);
+			//envia jogada
+		}
+		return maoStatus;
+	}
+
+	private void jogaNoMonte(Carta[] cartas) {
+		monte.setUltimaJogada(cartas);
+		List<Carta> m = monte.getConteudo();
+		for (Carta c : cartas) {
+			m.add(c);
+		}
+		monte.setConteudo(m);
+		monte.setIdUltimoJogador(atorJogador.getJogadorLocal().getId());
+		participantes[atorJogador.getJogadorLocal().getId()-1].retiraCartasDaMao(cartas);
+
+
+	}
+
+	private int analisaMao(Carta[] cartas) {
+		int retorno = 18;
+		if((cartas.length > 4) || (cartas.length <1) ){
+			retorno = 19;
+		}else{
+			if(atorJogador.getJogadorLocal().getId()!=idDaVez){
+				retorno = 20;
+			}
+		}
+		return retorno;
+	}
 
 
 	public void iniciarNovaPartida(int ordem) {

@@ -41,4 +41,16 @@ public class Jogador {
 		this.daVez = false;
 	}
 
+
+	public void retiraCartasDaMao(Carta[] cartas) {
+		for (Carta c : cartas) {
+			for (Carta c0 : mao){
+				if(c0.getValor() == c.getValor()){
+					if(c0.getNaipe()==c.getNaipe()){
+						mao.remove(c0);
+					}
+				}
+			}
+		}
+	}
 }

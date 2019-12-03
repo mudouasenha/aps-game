@@ -6,6 +6,7 @@ public class Monte {
 	
 	protected List<Carta> conteudo;
 	protected Carta[] ultimaJogada;
+	protected int idUltimoJogador;
 	
 	
 	
@@ -26,4 +27,12 @@ public class Monte {
 		setConteudo(null); // mudar;
 		return cartas;
     }
+
+	public int getIdUltimoJogador() {
+		return idUltimoJogador;
+	}
+
+	public void setIdUltimoJogador(int idUltimoJogador) {
+		this.idUltimoJogador = idUltimoJogador;
+	}
 }
