@@ -21,5 +21,7 @@ public class Monte {
 	public void setUltimaJogada(Carta[] ultimaJogada) {
 		this.ultimaJogada = ultimaJogada;
 	}
+	public List<Carta> esvaziaMonte() {
 
+    }
 }

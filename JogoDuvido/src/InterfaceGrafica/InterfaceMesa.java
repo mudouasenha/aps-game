@@ -125,6 +125,7 @@ public class InterfaceMesa extends JFrame{
 		btnDuvido.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				atorJogador.duvidar();
 				JOptionPane.showMessageDialog(null, "Voce perdeu o desafio");
 			}
 		});

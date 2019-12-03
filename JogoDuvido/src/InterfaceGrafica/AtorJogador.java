@@ -32,7 +32,9 @@ public boolean desconectar() {
 	return this.mesaDeJogo.desconectar();
 }
 
-
+public void duvidar() {
+	Jogador atual = this.mesaDeJogo.getIDJogadorAtual();
+}
 	//public ArrayList<Carta> leMaoLocal(){
 
 	//}

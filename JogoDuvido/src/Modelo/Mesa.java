@@ -23,6 +23,7 @@ public class Mesa implements Jogada {
 	public void setNumeroDaRodada(int numeroDaRodada) {
 		this.numeroDaRodada = numeroDaRodada;
 	}
+	public int getIDJogadorAtual() { return 1;}
 	public Monte getMonte() {
 		return monte;
 	}
@@ -71,6 +72,15 @@ public class Mesa implements Jogada {
 				return false;
 			}
 	}
+
+	public boolean verificaBlefe() {
+		return true;
+	}
+
+	public void repassaCartas() {
+
+	}
+
 
 	public void iniciarNovaPartida(int ordem) {
 
