@@ -3,6 +3,8 @@ package Modelo;
 import InterfaceGrafica.AtorJogador;
 import Rede.AtorNetgames;
 import br.ufsc.inf.leobr.cliente.Jogada;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Mesa implements Jogada {
@@ -84,15 +86,39 @@ public class Mesa implements Jogada {
 		return true;
 	}
 
-	public void repassaCartas() {
+	public void repassaCartas(int idDestino, List<Carta> cartas) {
+
+		Jogador perdedor = participantes[idDestino-1];
+		ArrayList<Carta> mao = perdedor.getMao();
+
+		for(Carta c : cartas){
+			mao.add(c);
+		}
+		perdedor.setMao(mao);
+		
 
 	}
 
 	public int desafiaJogada() {
+		int status = -1;
 		//.......
-		boolean blefou = false;
+		boolean blefou = verificaBlefe();
+		int idPerdedor = -1;
+		if(blefou){
+			idPerdedor = getJogadorAtual().getId();
+			status = 12;
+		}else{
+			idPerdedor = atorJogador.getJogadorLocal().getId();
+			status = 13;
+		}
+
 		List<Carta> cartas = monte.esvaziaMonte();
-		return 12;
+
+		repassaCartas(idPerdedor, cartas);
+
+		//envia jogada
+
+		return status;
 	}
 
 	public int realizaJogada(Carta[] cartas){
