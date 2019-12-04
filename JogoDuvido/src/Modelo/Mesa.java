@@ -125,7 +125,7 @@ public class Mesa implements Jogada {
 
 		repassaCartas(idPerdedor, cartas);
 
-		enviaJogada();
+		enviaJogada(1);
 
 		return status;
 	}
@@ -134,7 +134,7 @@ public class Mesa implements Jogada {
 		int maoStatus = analisaMao(cartas);
 		if(maoStatus==18){
 			jogaNoMonte(cartas);
-			enviaJogada();
+			enviaJogada(0);
 		}
 		return maoStatus;
 	}
@@ -172,14 +172,36 @@ public class Mesa implements Jogada {
 	public void receberJogada(Mesa jogada) {
 	}
 
-	public void enviaJogada(){
-		atorNetGames.enviarJogada(this);
+	public void enviaJogada(int tipo){
+
+		EstadoMesa jogada = geraEstadoJogada() ;
+
+		if(tipo == 1){
+			jogada.setDesafiou(true);
+		}else{
+			if(tipo ==2){
+				jogada.setInicioDePartida(true);
+			}
+		}
+
+		atorNetGames.enviarJogada(jogada);
 	}
+
+	private EstadoMesa geraEstadoJogada() {
+		EstadoMesa estado = new EstadoMesa();
+		estado.setJogadorDaVez(this.idDaVez);
+		estado.setMonte(this.monte);
+		estado.setParticipantes(this.participantes);
+		estado.setValorDaRodada(this.valorAtualDaRodada);
+		return estado;
+	}
+
+
 
 	public void iniciarNovaPartida(String adv1, String adv2) {
 		limpaMesa();
 
-		List<Carta> baralho = criaBaralhoEmbaralhado();
+		Carta[] baralho = criaBaralhoEmbaralhado();
 
 		List<Carta>  mao ;
 
@@ -195,28 +217,38 @@ public class Mesa implements Jogada {
 		mao = distribuiCartasParaJogador(baralho);
 		participantes[2].setMao(mao);
 
-		enviaJogada();
+		enviaJogada(2);
 
 
 	}
 
-	private List<Carta> distribuiCartasParaJogador(List<Carta>  baralho) {
+	private List<Carta> distribuiCartasParaJogador(Carta[] baralho) {
 		List<Carta> mao = new ArrayList<Carta>();
-		int inicioLoop = 0;
-		int fimLoop = 18;
+		int inicioLoop ;
+		int fimLoop ;
 
-		if(baralho.size()<52){
-			if(baralho.size()<34){
-				inicioLoop =35;
-			}else{
-				inicioLoop =0;
+		if(baralho[0]!=null){
+			inicioLoop = 0;
+			fimLoop = 18;
+		}else{
+			if(baralho[18]!=null){
+				inicioLoop = 18;
+				fimLoop = 35;
+			}else {
+				inicioLoop = 35;
+				fimLoop = 52;
 			}
+		}
+
+		for(int i = inicioLoop; i<fimLoop; i++){
+			mao.add(baralho[i]);
+			baralho[i] = null;
 		}
 
 		return mao;
 	}
 
-	private List<Carta>  criaBaralhoEmbaralhado() {
+	private Carta[]  criaBaralhoEmbaralhado() {
 		return null;
 	}
 

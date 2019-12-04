@@ -108,7 +108,7 @@ public class AtorNetgames implements OuvidorProxy {
         return;
     }
 
-    public void enviarJogada(Mesa estadoMesa)  {
+    public void enviarJogada(EstadoMesa estadoMesa)  {
         try {
             proxy.enviaJogada(estadoMesa);
         } catch (NaoJogandoException e) {
