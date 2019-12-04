@@ -19,6 +19,7 @@ public class Mesa implements Jogada {
 	protected boolean jogoEmAndamento;
 	protected String servidor = "";
 	protected int idDaVez;
+	protected int valorAtualDaRodada;
 	
 	
 	public int getNumeroDaRodada() {
@@ -83,6 +84,7 @@ public class Mesa implements Jogada {
 	}
 
 	public boolean verificaBlefe() {
+
 		return true;
 	}
 

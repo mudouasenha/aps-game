@@ -36,14 +36,22 @@ public boolean desconectar() {
 	return this.mesaDeJogo.desconectar();
 }
 
-public void duvidar() {
+public int duvidar() {
 	Jogador atual = this.mesaDeJogo.getJogadorAtual();
+	if(atual == this.getJogadorLocal()) {
+		return 11;
+	}
+
 	int status = mesaDeJogo.desafiaJogada();
 	if(status == 12) {
 		Jogador perdedor = this.mesaDeJogo.getJogadorAtual();
-	} else {
+	} else if (status == 13){
 		Jogador perdedor = this.getJogadorLocal();
+	} else { // MUDAR
+		return -1;
 	}
+
+	return status;
 }
 	//public ArrayList<Carta> leMaoLocal(){
 

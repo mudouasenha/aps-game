@@ -31,7 +31,7 @@ public class Main {
 		interfaceMesa.atualizaCartas(cartas);
         
         interfaceMesa.ator = new AtorJogador(mesa);
-        interfaceMesa.ator.jogadorLocal = new Jogador("Matheus");
+        interfaceMesa.ator.jogadorLocal = new Jogador("Matheus", 1);
         interfaceMesa.lblNomeadversario.setText("Matheus");
         interfaceMesa.lblNomeadversario_1.setText("Samuel");
 
