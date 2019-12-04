@@ -20,6 +20,7 @@ public class Mesa implements Jogada {
 	protected String servidor = "";
 	protected int idDaVez;
 	protected int valorAtualDaRodada;
+	protected int idVencedor;
 	
 	
 	public int getNumeroDaRodada() {
@@ -114,7 +115,7 @@ public class Mesa implements Jogada {
 		boolean blefou = verificaBlefe();
 		int idPerdedor = -1;
 		if(blefou){
-			idPerdedor = getJogadorAtual().getId();
+			idPerdedor = monte.getIdUltimoJogador();
 			status = 12;
 		}else{
 			idPerdedor = atorJogador.getJogadorLocal().getId();
@@ -134,9 +135,29 @@ public class Mesa implements Jogada {
 		int maoStatus = analisaMao(cartas);
 		if(maoStatus==18){
 			jogaNoMonte(cartas);
+			incrementaValorDaRodada();
+			proximoJogador();
 			enviaJogada(0);
 		}
 		return maoStatus;
+	}
+
+	private void proximoJogador() {
+
+		if(idDaVez<3){
+			idDaVez++;
+		}else{
+			idDaVez = 1;
+		}
+
+	}
+
+	private void incrementaValorDaRodada() {
+		if(valorAtualDaRodada<13){
+			valorAtualDaRodada++;
+		}else{
+			valorAtualDaRodada = 1;
+		}
 	}
 
 	private void jogaNoMonte(List<Carta>  cartas) {
@@ -169,7 +190,24 @@ public class Mesa implements Jogada {
 
 	}
 
-	public void receberJogada(Mesa jogada) {
+	public void receberJogada(EstadoMesa jogada) {
+		int status = analisaJogada(jogada);
+
+		atualizaInformacoes(jogada);
+	}
+
+	private void atualizaInformacoes(EstadoMesa jogada) {
+	}
+
+	private int analisaJogada(EstadoMesa jogada) {
+		int resultado = -1;
+		if(jogada.getJogadorDaVez() == atorJogador.getJogadorLocal().getId()){
+			resultado = 14;
+		}else{
+			// ...
+		}
+
+		return resultado;
 	}
 
 	public void enviaJogada(int tipo){
@@ -181,10 +219,23 @@ public class Mesa implements Jogada {
 		}else{
 			if(tipo ==2){
 				jogada.setInicioDePartida(true);
+			}else{
+				analisaVencedor();
+				if(idVencedor!=  0){
+					jogada.setIdVencedor(idVencedor);
+				}
 			}
 		}
 
 		atorNetGames.enviarJogada(jogada);
+	}
+
+	private void analisaVencedor() {
+		for(int i=0; i<3;i++){
+			if(participantes[i].getMao().size() == 0){
+				idVencedor = i+1;
+			}
+		}
 	}
 
 	private EstadoMesa geraEstadoJogada() {

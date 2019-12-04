@@ -9,6 +9,15 @@ public class EstadoMesa implements Jogada{
     protected int valorDaRodada;
     protected Jogador[] participantes;
     protected Monte monte;
+    protected int idVencedor;
+
+    public int getIdVencedor() {
+        return idVencedor;
+    }
+
+    public void setIdVencedor(int idVencedor) {
+        this.idVencedor = idVencedor;
+    }
 
     public boolean isInicioDePartida() {
         return inicioDePartida;
