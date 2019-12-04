@@ -52,18 +52,23 @@ public void iniciarPartida() {
 	this.intefaceMesa.informaStatus(status);
 }
 
+public void enviaMao(List<Carta> cartas){
+	int status = mesaDeJogo.realizaJogada(cartas);
+	intefaceMesa.informaStatus(status);
+}
+
 public void duvidar() {
 	int status;
-	Jogador atual = this.mesaDeJogo.getJogadorAtual();
-	if(atual == this.getJogadorLocal()) {
+	int atual = this.mesaDeJogo.getMonte().getIdUltimoJogador();
+	if(atual == this.getJogadorLocal().getId()) {
 		status = 11;
 	} else {
 		status = mesaDeJogo.desafiaJogada();
 	}
 	if(status == 12) {
-		Jogador perdedor = this.mesaDeJogo.getJogadorAtual();
+
 	} else if (status == 13){
-		Jogador perdedor = this.getJogadorLocal();
+
 	} else { // MUDAR
 
 	}

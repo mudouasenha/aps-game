@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.util.List;
 
 import Modelo.Carta;
-import Modelo.Mesa;
-import Rede.AtorNetgames;
+import Modelo.EstadoMesa;
 
 
 public class InterfaceMesa extends JFrame{
 	
-	protected AtorJogador ator;
+
 	protected JLabel lblNomeadversario = null;
 	protected JLabel lblNomeadversario_1 = null;
 	protected JMenuBar menuBar = null;
@@ -34,6 +34,11 @@ public class InterfaceMesa extends JFrame{
 	protected JMenuItem mntmLocalhost = null;
 	protected JMenuItem mntmUFSC = null;
 	protected JMenu menuHost = null;
+	protected JTextPane txtpnUltimaJogada;
+	protected JLabel labelQtdAdv1;
+	protected JLabel labelQtdAdv;
+	protected JLabel labelQtdMonte;
+
 
 
 
@@ -47,7 +52,6 @@ public class InterfaceMesa extends JFrame{
 
 		this.atorJogador = atorJogador;
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		//atorNetGames = new AtorNetgames(mesa);
 		this.getContentPane().setBackground(new Color(0, 100, 0));
 
 		menuBar = new JMenuBar();
@@ -149,7 +153,7 @@ public class InterfaceMesa extends JFrame{
 		lblImgcartas.setBounds(12, 58, 63, 81);
 		panel_1.add(lblImgcartas);
 		
-		JLabel labelQtdAdv = new JLabel("1");
+		labelQtdAdv = new JLabel("1");
 		labelQtdAdv.setFont(new Font("Garuda", Font.BOLD, 20));
 		labelQtdAdv.setBounds(87, 58, 34, 99);
 		panel_1.add(labelQtdAdv);
@@ -169,12 +173,12 @@ public class InterfaceMesa extends JFrame{
 		labelImgCartas1.setBounds(51, 57, 70, 100);
 		panel_2.add(labelImgCartas1);
 		
-		JLabel labelQtdAdv1 = new JLabel("1");
+		labelQtdAdv1 = new JLabel("1");
 		labelQtdAdv1.setFont(new Font("Garuda", Font.BOLD, 20));
 		labelQtdAdv1.setBounds(12, 57, 34, 99);
 		panel_2.add(labelQtdAdv1);
 		
-		JLabel labelQtdMonte = new JLabel("0");
+		labelQtdMonte = new JLabel("0");
 		labelQtdMonte.setForeground(Color.CYAN);
 		labelQtdMonte.setBackground(Color.CYAN);
 		labelQtdMonte.setFont(new Font("Garuda", Font.BOLD, 20));
@@ -182,8 +186,8 @@ public class InterfaceMesa extends JFrame{
 		labelQtdMonte.setBounds(319, 203, 87, 32);
 		getContentPane().add(labelQtdMonte);
 		
-		JTextPane txtpnUltimaJogada = new JTextPane();
-		txtpnUltimaJogada.setEditable(false);
+		txtpnUltimaJogada = new JTextPane();
+		txtpnUltimaJogada.setEditable(true);
 		txtpnUltimaJogada.setBackground(Color.GRAY);
 		txtpnUltimaJogada.setText("Ultima jogada");
 		txtpnUltimaJogada.setBounds(214, 12, 345, 32);
@@ -196,9 +200,104 @@ public class InterfaceMesa extends JFrame{
         this.setVisible(true);
         this.setResizable(true);
 	}
+
+	public void enviaMao(List<Carta> cartas){
+		atorJogador.enviaMao(cartas);
+	}
+	public String traduzValor(int valor){
+		String resultado = "Valor invalido";
+		switch (valor){
+			case 1:
+				resultado = "Ás";
+				break;
+			case 2:
+				resultado = "Dois";
+				break;
+			case 3:
+				resultado = "Três";
+				break;
+			case 4:
+				resultado = "Quatro";
+				break;
+			case 5:
+				resultado = "Cinco";
+				break;
+			case 6:
+				resultado = "Seis";
+				break;
+			case 7:
+				resultado = "Sete";
+				break;
+			case 8:
+				resultado = "Oito";
+				break;
+			case 9:
+				resultado = "Nove";
+				break;
+			case 10:
+				resultado = "Dez";
+				break;
+			case 11:
+				resultado = "Valete";
+				break;
+			case 12:
+				resultado = "Dama";
+				break;
+			case 13:
+				resultado = "Rei";
+				break;
+
+
+		}
+		return  resultado;
+	}
+	public int posicaoAdversario(int seuId){
+		int resposta = seuId;
+
+		if(seuId == 3){
+			resposta = 0;
+		}else{
+			if(seuId == 2){
+                 resposta = 2;
+			}else{
+				resposta = 1;
+			}
+		}
+
+		return resposta;
+	}
+	public int posicaoAdversario2(int seuId){
+		int resposta = seuId;
+
+		if(seuId == 3){
+			resposta = 1;
+		}else{
+			if(seuId == 2){
+				resposta = 0;
+			}else{
+				resposta = 2;
+			}
+		}
+
+		return resposta;
+	}
+
+	public void atualizaInterface(EstadoMesa estado){
+		txtpnUltimaJogada.setText("Ultima jogada"+ estado.getMonte().getUltimaJogada().size() + traduzValor(estado.getValorDaRodada()));
+		labelQtdMonte.setText(""+estado.getMonte().getConteudo().size());
+		labelQtdAdv.setText(""+estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getQtdCartas());
+		labelQtdAdv1.setText(""+estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getQtdCartas());
+
+		if(estado.isInicioDePartida()){
+			lblNomeadversario.setText(estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getNome());
+			lblNomeadversario_1.setText(estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getNome());
+		}
+		panel.recebeCartas(estado.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao());
+
+	}
 	
-	public ArrayList<JLabel> atualizaCartas(ArrayList<JLabel> deque) {
-		return panel.atualizaMao(deque);
+	public List<JLabel> atualizaCartas(List<JLabel> deque) {
+		return panel.atualizaMao((deque));
 	}
 	
 	public ArrayList<Carta> iconizar(ArrayList<Carta> deque) {

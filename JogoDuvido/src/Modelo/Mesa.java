@@ -29,12 +29,7 @@ public class Mesa implements Jogada {
 		return atorJogador;
 	}
 
-	public Jogador getJogadorAtual() {
-		int id = -1;
-		// ...........
-		// ...........
-		return participantes[id];
-	}
+
 	public Monte getMonte() {
 		return monte;
 	}

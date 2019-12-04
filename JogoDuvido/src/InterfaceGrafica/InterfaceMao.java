@@ -86,7 +86,7 @@ public class InterfaceMao extends JPanel {
 		}
 	}
 	
-	public ArrayList<JLabel> atualizaMao(ArrayList<JLabel> deque) {
+	public List<JLabel> atualizaMao(List<JLabel> deque) {
 		int i = 0;
 		for(JLabel carta : deque) {
 			modeloLista.addElement(carta);
@@ -196,6 +196,9 @@ public class InterfaceMao extends JPanel {
 	   }
 	   return cartas;
 	   
+   }
+   public void recebeCartas(List<Carta> cartas){
+
    }
 
 
