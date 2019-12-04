@@ -5,7 +5,7 @@ import java.util.List;
 public class Monte {
 	
 	protected List<Carta> conteudo;
-	protected Carta[] ultimaJogada;
+	protected List<Carta>  ultimaJogada;
 	protected int idUltimoJogador;
 	
 	
@@ -16,10 +16,10 @@ public class Monte {
 	public void setConteudo(List<Carta> conteudo) {
 		this.conteudo = conteudo;
 	}
-	public Carta[] getUltimaJogada() {
+	public List<Carta>  getUltimaJogada() {
 		return ultimaJogada;
 	}
-	public void setUltimaJogada(Carta[] ultimaJogada) {
+	public void setUltimaJogada(List<Carta>  ultimaJogada) {
 		this.ultimaJogada = ultimaJogada;
 	}
 	public List<Carta> esvaziaMonte() {

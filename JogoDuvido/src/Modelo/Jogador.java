@@ -1,10 +1,11 @@
 package Modelo;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 public class Jogador {
 	
-	protected ArrayList<Carta> mao;
+	protected List<Carta> mao;
 	protected String nome;
 	protected int qtdCartas;
 	protected boolean daVez;
@@ -12,10 +13,10 @@ public class Jogador {
 	
 	
 	
-	public void setMao(ArrayList<Carta> cartas) {
+	public void setMao(List<Carta> cartas) {
 		this.mao = cartas;
 	}
-	public ArrayList<Carta> getMao() {
+	public List<Carta> getMao() {
 		return mao;
 	}
 	
@@ -43,7 +44,7 @@ public class Jogador {
 	}
 
 
-	public void retiraCartasDaMao(Carta[] cartas) {
+	public void retiraCartasDaMao(List<Carta>  cartas) {
 		for (Carta c : cartas) {
 			for (Carta c0 : mao){
 				if(c0.getValor() == c.getValor()){

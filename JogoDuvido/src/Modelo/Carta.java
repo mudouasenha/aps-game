@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Carta {
 	
-	protected ValorDeCarta valor;
+	protected int valor;
 	protected Naipe naipe;
 	protected boolean estaVirada;
 	protected ImageIcon imagem;
@@ -14,16 +14,16 @@ public class Carta {
 
 	}
 	
-	public Carta(ValorDeCarta valor, Naipe naipe) {
+	public Carta(int valor, Naipe naipe) {
 		estaVirada = false;
 		this.valor = valor;
 		this.naipe = naipe;
 	}
 	
-	public ValorDeCarta getValor() {
+	public int getValor() {
 		return valor;
 	}
-	public void setValor(ValorDeCarta valor) {
+	public void setValor(int valor) {
 		this.valor = valor;
 	}
 	public Naipe getNaipe() {

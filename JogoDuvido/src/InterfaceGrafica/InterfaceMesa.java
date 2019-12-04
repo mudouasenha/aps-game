@@ -35,9 +35,9 @@ public class InterfaceMesa extends JFrame{
 	protected JMenuItem mntmUFSC = null;
 	protected JMenu menuHost = null;
 
-	//protected Mesa mesa;
+
 	protected AtorJogador atorJogador;
-	protected AtorNetgames atorNetGames;
+
 
 
 

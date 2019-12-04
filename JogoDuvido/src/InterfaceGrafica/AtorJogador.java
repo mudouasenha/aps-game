@@ -21,7 +21,7 @@ public class AtorJogador {
 	protected String servidor;
 	
 public AtorJogador(Mesa mesaDeJogo) {
-	//this.intefaceMesa = new InterfaceMesa(this);
+	this.intefaceMesa = new InterfaceMesa(this);
 	this.mesaDeJogo = mesaDeJogo;
 }
 

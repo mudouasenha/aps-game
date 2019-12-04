@@ -84,14 +84,21 @@ public class Mesa implements Jogada {
 	}
 
 	public boolean verificaBlefe() {
+		boolean blefou = false;
 
-		return true;
+		for (Carta c : monte.getUltimaJogada()){
+			if(c.getValor()!=valorAtualDaRodada){
+				blefou = true;
+			}
+		}
+
+		return blefou;
 	}
 
 	public void repassaCartas(int idDestino, List<Carta> cartas) {
 
 		Jogador perdedor = participantes[idDestino-1];
-		ArrayList<Carta> mao = perdedor.getMao();
+		List<Carta> mao = perdedor.getMao();
 
 		for(Carta c : cartas){
 			mao.add(c);
@@ -123,7 +130,7 @@ public class Mesa implements Jogada {
 		return status;
 	}
 
-	public int realizaJogada(Carta[] cartas){
+	public int realizaJogada(List<Carta>  cartas){
 		int maoStatus = analisaMao(cartas);
 		if(maoStatus==18){
 			jogaNoMonte(cartas);
@@ -132,7 +139,7 @@ public class Mesa implements Jogada {
 		return maoStatus;
 	}
 
-	private void jogaNoMonte(Carta[] cartas) {
+	private void jogaNoMonte(List<Carta>  cartas) {
 		monte.setUltimaJogada(cartas);
 		List<Carta> m = monte.getConteudo();
 		for (Carta c : cartas) {
@@ -145,9 +152,9 @@ public class Mesa implements Jogada {
 
 	}
 
-	private int analisaMao(Carta[] cartas) {
+	private int analisaMao(List<Carta>  cartas) {
 		int retorno = 18;
-		if((cartas.length > 4) || (cartas.length <1) ){
+		if((cartas.size() > 4) || (cartas.size()<1) ){
 			retorno = 19;
 		}else{
 			if(atorJogador.getJogadorLocal().getId()!=idDaVez){
@@ -172,32 +179,44 @@ public class Mesa implements Jogada {
 	public void iniciarNovaPartida(String adv1, String adv2) {
 		limpaMesa();
 
-		Carta[] baralho = criaBaralhoEmbaralhado();
+		List<Carta> baralho = criaBaralhoEmbaralhado();
 
-		Carta[] mao ;
+		List<Carta>  mao ;
 
 		participantes[0] = new Jogador(atorJogador.getJogadorLocal().getNome(), 1);
 		mao = distribuiCartasParaJogador(baralho);
-		participantes[0].setMao(null);
+		participantes[0].setMao(mao);
 
 		participantes[1] = new Jogador(adv1, 2);
 		mao = distribuiCartasParaJogador(baralho);
-		participantes[1].setMao(null);
+		participantes[1].setMao(mao);
 
 		participantes[2] = new Jogador(adv2, 3);
 		mao = distribuiCartasParaJogador(baralho);
-		participantes[2].setMao(null);
+		participantes[2].setMao(mao);
 
 		enviaJogada();
 
 
 	}
 
-	private Carta[] distribuiCartasParaJogador(Carta[] baralho) {
-		return null;
+	private List<Carta> distribuiCartasParaJogador(List<Carta>  baralho) {
+		List<Carta> mao = new ArrayList<Carta>();
+		int inicioLoop = 0;
+		int fimLoop = 18;
+
+		if(baralho.size()<52){
+			if(baralho.size()<34){
+				inicioLoop =35;
+			}else{
+				inicioLoop =0;
+			}
+		}
+
+		return mao;
 	}
 
-	private Carta[] criaBaralhoEmbaralhado() {
+	private List<Carta>  criaBaralhoEmbaralhado() {
 		return null;
 	}
 
