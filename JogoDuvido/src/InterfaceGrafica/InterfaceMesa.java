@@ -36,6 +36,7 @@ public class InterfaceMesa extends JFrame{
 	protected JMenu menuHost = null;
 
 
+
 	protected AtorJogador atorJogador;
 
 
@@ -61,6 +62,7 @@ public class InterfaceMesa extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				atorJogador.setServidor("localhost");
+				notificar("localhost setado");
 			}
 		});
 		menuHost.add(mntmLocalhost);
@@ -71,6 +73,7 @@ public class InterfaceMesa extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				atorJogador.setServidor("netgames.labsoft.ufsc.br");
+				notificar("netgames.labsoft.ufsc.br setado");
 			}
 		});
 		menuHost.add(mntmUFSC);
@@ -218,5 +221,72 @@ public class InterfaceMesa extends JFrame{
 
 	public void notificar(String mensagem) {
 		JOptionPane.showMessageDialog(null, mensagem);
+	}
+
+	public void informaStatus(int status) {
+		switch(status) {
+			case 0:
+				notificar("Desconectou com sucesso");
+			case 1:
+				notificar("Já desconectado");
+				break;
+			case 2:
+				notificar("Erro de Desconexão");
+				break;
+			case 3:
+				notificar("Conectou com sucesso");
+				break;
+			case 4:
+				notificar("Já conectado");
+				break;
+			case 5:
+				notificar("Erro de Conexao");
+				break;
+			case 6:
+				notificar("Recebeu nova partida");
+				break;
+			case 7:
+				notificar("Sem conexão para inicio");
+				break;
+			case 8:
+				notificar("Já tem partida em andamento");
+				break;
+			case 9:
+				notificar("Não há jogadores suficientes");
+				break;
+			case 10:
+				notificar("Solicitação de início enviada");
+				break;
+			case 11:
+				notificar("Não duvide de si mesmo");
+				break;
+			case 12:
+				notificar("Desafiador venceu");
+				break;
+			case 13:
+				notificar("Desafiador perdeu");
+				break;
+			case 14:
+				notificar("Sua vez de jogar");
+				break;
+			case 15:
+				notificar("Voce venceu");
+				break;
+			case 16:
+				notificar("Voce perdeu");
+				break;
+			case 17:
+				notificar("Recebeu cartas do ");
+				break;
+			case 18:
+				notificar("Jogada sucedida");
+				break;
+			case 19:
+				notificar("Numero de cartas inválido");
+				break;
+			case 20:
+				notificar("Não é a sua vez");
+				break;
+		}
 	}
 }
