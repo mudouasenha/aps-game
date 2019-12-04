@@ -18,11 +18,16 @@ public class AtorJogador {
 	protected InterfaceMesa intefaceMesa;
 	protected Mesa mesaDeJogo;
 	protected Jogador jogadorLocal;
+	protected String servidor;
 	
 public AtorJogador(Mesa mesaDeJogo) {
 	//this.intefaceMesa = new InterfaceMesa(this);
 	this.mesaDeJogo = mesaDeJogo;
 }
+
+public String getServidor() { return servidor; }
+
+public void setServidor(String servidor) { this.servidor = servidor; }
 
 public boolean conectar() {
 	return this.mesaDeJogo.conectar();
@@ -56,5 +61,7 @@ public int duvidar() {
 	//public ArrayList<Carta> leMaoLocal(){
 
 	//}
+
+
 
 }

@@ -35,7 +35,7 @@ public class InterfaceMesa extends JFrame{
 	protected JMenuItem mntmUFSC = null;
 	protected JMenu menuHost = null;
 
-	protected Mesa mesa;
+	//protected Mesa mesa;
 	protected AtorJogador atorJogador;
 	protected AtorNetgames atorNetGames;
 
@@ -46,7 +46,7 @@ public class InterfaceMesa extends JFrame{
 
 		this.atorJogador = atorJogador;
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		atorNetGames = new AtorNetgames(mesa);
+		//atorNetGames = new AtorNetgames(mesa);
 		this.getContentPane().setBackground(new Color(0, 100, 0));
 
 		menuBar = new JMenuBar();
@@ -60,7 +60,7 @@ public class InterfaceMesa extends JFrame{
 		mntmLocalhost.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				mesa.setServidor("localhost");
+				atorJogador.setServidor("localhost");
 			}
 		});
 		menuHost.add(mntmLocalhost);
@@ -70,7 +70,7 @@ public class InterfaceMesa extends JFrame{
 		mntmUFSC.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				mesa.setServidor("netgames.labsoft.ufsc.br");
+				atorJogador.setServidor("netgames.labsoft.ufsc.br");
 			}
 		});
 		menuHost.add(mntmUFSC);
@@ -96,7 +96,7 @@ public class InterfaceMesa extends JFrame{
 		mntmDesconectar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (atorNetGames.desconectar()) {
+				if (atorJogador.desconectar()) {
 					JOptionPane.showMessageDialog(rootPane, "Desconectado");
 				} else {
 					JOptionPane.showMessageDialog(rootPane, "Voce precisa estar conectado para desconectar");
@@ -214,5 +214,9 @@ public class InterfaceMesa extends JFrame{
 	
 	public void adicionarItensLista(ArrayList<JLabel> cartas) {
 		panel.adicionaItensLista(cartas);
+	}
+
+	public void notificar(String mensagem) {
+		JOptionPane.showMessageDialog(null, mensagem);
 	}
 }
