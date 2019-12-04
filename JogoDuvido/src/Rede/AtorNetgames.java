@@ -12,14 +12,12 @@ import javax.swing.*;
 public class AtorNetgames implements OuvidorProxy {
     private static final long serialVersionUID = 1L;
     protected Proxy proxy;
-    protected AtorJogador jogador;
     protected Mesa mesa;
 
 
 
     public AtorNetgames(Mesa mesa) {
         super();
-        this.jogador = jogador;
         this.proxy = Proxy.getInstance();
         this.proxy.addOuvinte(this);
     }
@@ -54,10 +52,7 @@ public class AtorNetgames implements OuvidorProxy {
         return true;
     }
 
-    public String obterNomeAdversarios() {
-        String nome = "matheus";
-        return nome;
-    }
+
 
     //public void enviarJogada(Modelo.Jogada jogada) {
     //    try {
@@ -72,11 +67,19 @@ public class AtorNetgames implements OuvidorProxy {
     @Override
     public void iniciarNovaPartida(Integer ordem) {
 
+        System.out.println("Recebeu inicio de partida");
+
         if(ordem == 1){
             String adv1 = proxy.obterNomeAdversario(2);
             String adv2 = proxy.obterNomeAdversario(3);
 
             mesa.iniciarNovaPartida(adv1, adv2);
+        }else{
+            if(ordem == 2){
+                mesa.getAtorJogador().getJogadorLocal().setId(2);
+            }else{
+                mesa.getAtorJogador().getJogadorLocal().setId(3);
+            }
         }
 
 
@@ -95,6 +98,7 @@ public class AtorNetgames implements OuvidorProxy {
 
     @Override
     public void receberJogada(Jogada jogada) {
+        System.out.println("Recebeu jogada");
         this.mesa.receberJogada((EstadoMesa) jogada);
     }
 

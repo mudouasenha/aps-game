@@ -86,7 +86,8 @@ public class InterfaceMesa extends JFrame{
 		mntmConectar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				atorJogador.conectar();
+				String nomeObtido = JOptionPane.showInputDialog(rootPane,"Informe o nome do jogador");
+				atorJogador.conectar(nomeObtido);
 			}
 		});
 		mnOpes.add(mntmConectar);

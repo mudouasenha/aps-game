@@ -18,19 +18,23 @@ public class AtorJogador {
 	protected InterfaceMesa intefaceMesa;
 	protected Mesa mesaDeJogo;
 	protected Jogador jogadorLocal;
-	protected String servidor;
+
 	
 public AtorJogador(Mesa mesaDeJogo) {
 	this.intefaceMesa = new InterfaceMesa(this);
 	this.mesaDeJogo = mesaDeJogo;
 }
 
-public String getServidor() { return servidor; }
+	public void setJogadorLocal(Jogador jogadorLocal) {
+		this.jogadorLocal = jogadorLocal;
+	}
 
-public void setServidor(String servidor) { this.servidor = servidor; }
 
-public void conectar() {
-	int status = this.mesaDeJogo.conectar();
+
+public void setServidor(String servidor) { this.mesaDeJogo.setServidor(servidor); }
+
+public void conectar(String nome) {
+	int status = this.mesaDeJogo.conectar(nome);
 	this.intefaceMesa.informaStatus(status);
 }
 

@@ -12,7 +12,6 @@ public class Mesa implements Jogada {
 	
 	protected Monte monte;
 	protected Jogador[] participantes;
-	protected Jogador jogador;
 	protected boolean conectado;
 	protected AtorNetgames atorNetGames;
 	protected AtorJogador atorJogador;
@@ -21,8 +20,14 @@ public class Mesa implements Jogada {
 	protected int idDaVez;
 	protected int valorAtualDaRodada;
 	protected int idVencedor;
-	
-	
+
+	public AtorNetgames getAtorNetGames() {
+		return atorNetGames;
+	}
+
+	public AtorJogador getAtorJogador() {
+		return atorJogador;
+	}
 
 	public Jogador getJogadorAtual() {
 		int id = -1;
@@ -47,11 +52,10 @@ public class Mesa implements Jogada {
 		this.servidor = servidor;
 	}
 
-	public int conectar() {
+	public int conectar(String nome) {
 		if(!this.conectado) {
-			String servidor = "localhost";
-			String nomeJogador = "matheus";
-			this.jogador = new Jogador(nomeJogador, 1);
+			String nomeJogador = nome;
+			this.atorJogador.setJogadorLocal(new Jogador(nomeJogador, 1));
 			boolean conectado = this.atorNetGames.conectar(servidor, nomeJogador);
 			if (conectado) {
 				this.conectado = true;
