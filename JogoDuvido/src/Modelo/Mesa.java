@@ -6,11 +6,11 @@ import br.ufsc.inf.leobr.cliente.Jogada;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Mesa implements Jogada {
 	
 	protected Monte monte;
-	protected int numeroDaRodada;
 	protected Jogador[] participantes;
 	protected Jogador jogador;
 	protected boolean conectado;
@@ -23,12 +23,7 @@ public class Mesa implements Jogada {
 	protected int idVencedor;
 	
 	
-	public int getNumeroDaRodada() {
-		return numeroDaRodada;
-	}
-	public void setNumeroDaRodada(int numeroDaRodada) {
-		this.numeroDaRodada = numeroDaRodada;
-	}
+
 	public Jogador getJogadorAtual() {
 		int id = -1;
 		// ...........
@@ -126,6 +121,9 @@ public class Mesa implements Jogada {
 
 		repassaCartas(idPerdedor, cartas);
 
+		idDaVez = idPerdedor;
+		valorAtualDaRodada = 1;
+
 		enviaJogada(1);
 
 		return status;
@@ -197,6 +195,10 @@ public class Mesa implements Jogada {
 	}
 
 	private void atualizaInformacoes(EstadoMesa jogada) {
+		monte = jogada.getMonte();
+		idDaVez = jogada.getJogadorDaVez();
+		participantes = jogada.getParticipantes();
+		valorAtualDaRodada = jogada.getValorDaRodada();
 	}
 
 	private int analisaJogada(EstadoMesa jogada) {
@@ -204,7 +206,21 @@ public class Mesa implements Jogada {
 		if(jogada.getJogadorDaVez() == atorJogador.getJogadorLocal().getId()){
 			resultado = 14;
 		}else{
-			// ...
+			if(jogada.getIdVencedor() != 0){
+				if(jogada.getIdVencedor() == atorJogador.getJogadorLocal().getId()){
+					resultado = 15;
+				}else{
+					resultado = 16;
+				}
+			}else{
+				if(jogada.isInicioDePartida()){
+					resultado = 6;
+				}else{
+					if (jogada.isDesafiou() && jogada.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao().size() > participantes[atorJogador.getJogadorLocal().getId()-1].getMao().size()){
+						resultado = 17;
+					}
+				}
+			}
 		}
 
 		return resultado;
@@ -300,9 +316,41 @@ public class Mesa implements Jogada {
 	}
 
 	private Carta[]  criaBaralhoEmbaralhado() {
-		return null;
+		Carta[] embaralhado = new Carta[52];
+		List<Carta> baralho = geraBaralhoOrdenado();
+
+		Random r = new Random();
+		int qtdCartas = 52;
+		int indiceRandom = 0;
+
+		for(int i = 0; i<52; i++, qtdCartas --){
+
+			indiceRandom = r.nextInt(qtdCartas);
+			embaralhado[i] = baralho.get(indiceRandom);
+			baralho.remove(indiceRandom);
+
+		}
+
+		return embaralhado;
+	}
+
+	private List<Carta> geraBaralhoOrdenado() {
+		List<Carta> retorno = new ArrayList<Carta>();
+
+		for(int i =1; i<=13; i++){
+			retorno.add(new Carta(i, Naipe.OURO));
+			retorno.add(new Carta(i, Naipe.COPAS));
+			retorno.add(new Carta(i, Naipe.ESPADAS));
+			retorno.add(new Carta(i, Naipe.PAUS));
+		}
+
+		return retorno;
 	}
 
 	private void limpaMesa() {
+		idDaVez   = 1;
+		idVencedor = 0;
+		monte = new Monte();
+		participantes = new Jogador[3];
 	}
 }

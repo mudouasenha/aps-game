@@ -7,8 +7,8 @@ public class Monte {
 	protected List<Carta> conteudo;
 	protected List<Carta>  ultimaJogada;
 	protected int idUltimoJogador;
-	
-	
+
+	public Monte(){}
 	
 	public List<Carta> getConteudo() {
 		return conteudo;
