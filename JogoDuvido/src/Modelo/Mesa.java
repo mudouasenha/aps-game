@@ -189,7 +189,8 @@ public class Mesa implements Jogada {
 
 
 	public int iniciarPartida() {
-		return -1;
+		atorNetGames.iniciarPartida();
+		return 10;
 	}
 
 	public void receberJogada(EstadoMesa jogada) {

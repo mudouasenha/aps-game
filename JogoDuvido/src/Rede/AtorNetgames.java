@@ -20,6 +20,7 @@ public class AtorNetgames implements OuvidorProxy {
         super();
         this.proxy = Proxy.getInstance();
         this.proxy.addOuvinte(this);
+        this.mesa = mesa;
     }
 
     public boolean conectar(String servidor, String nome) {
