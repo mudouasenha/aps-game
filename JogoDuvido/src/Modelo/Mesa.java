@@ -52,7 +52,7 @@ public class Mesa implements Jogada {
 		this.servidor = servidor;
 	}
 
-	public boolean conectar() {
+	public int conectar() {
 		if(!this.conectado) {
 			String servidor = "localhost";
 			String nomeJogador = "matheus";
@@ -60,27 +60,27 @@ public class Mesa implements Jogada {
 			boolean conectado = this.atorNetGames.conectar(servidor, nomeJogador);
 			if (conectado) {
 				this.conectado = true;
-				return true;
+				return 3;
 			} else {
-				return false;
+				return 5;
 			}
 		} else {
-			return false;
+			return 4;
 		}
 	}
 
-	public boolean desconectar() {
+	public int desconectar() {
 		if(this.conectado) {
 			boolean desconectou = this.atorNetGames.desconectar();
 			if (desconectou) {
 				this.conectado = false;
 				this.jogoEmAndamento = false;
-				return true;
+				return 0;
 			} else {
-				return false;
+				return 2;
 			}
 		}	else {
-				return false;
+				return 1;
 			}
 	}
 
@@ -186,8 +186,8 @@ public class Mesa implements Jogada {
 	}
 
 
-	public void iniciarPartida() {
-
+	public int iniciarPartida() {
+		return -1;
 	}
 
 	public void receberJogada(EstadoMesa jogada) {

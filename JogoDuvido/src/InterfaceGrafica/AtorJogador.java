@@ -29,39 +29,43 @@ public String getServidor() { return servidor; }
 
 public void setServidor(String servidor) { this.servidor = servidor; }
 
-public boolean conectar() {
-	return this.mesaDeJogo.conectar();
+public void conectar() {
+	int status = this.mesaDeJogo.conectar();
+	this.intefaceMesa.informaStatus(status);
 }
 
 public Jogador getJogadorLocal() {
 	return jogadorLocal;
 }
 
-public boolean desconectar() {
-	return this.mesaDeJogo.desconectar();
+public void desconectar() {
+	int status = this.mesaDeJogo.desconectar();
+	this.intefaceMesa.informaStatus(status);
 }
 
-public int duvidar() {
+public void iniciarPartida() {
+	int status = this.mesaDeJogo.iniciarPartida();
+	this.intefaceMesa.informaStatus(status);
+}
+
+public void duvidar() {
+	int status;
 	Jogador atual = this.mesaDeJogo.getJogadorAtual();
 	if(atual == this.getJogadorLocal()) {
-		return 11;
+		status = 11;
+	} else {
+		status = mesaDeJogo.desafiaJogada();
 	}
-
-	int status = mesaDeJogo.desafiaJogada();
 	if(status == 12) {
 		Jogador perdedor = this.mesaDeJogo.getJogadorAtual();
 	} else if (status == 13){
 		Jogador perdedor = this.getJogadorLocal();
 	} else { // MUDAR
-		return -1;
+
 	}
-
-	return status;
+	this.intefaceMesa.informaStatus(status);
 }
-	//public ArrayList<Carta> leMaoLocal(){
-
-	//}
-
-
 
 }
+
+

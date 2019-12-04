@@ -95,7 +95,7 @@ public class AtorNetgames implements OuvidorProxy {
 
     @Override
     public void receberJogada(Jogada jogada) {
-        this.mesa.receberJogada((Mesa) jogada);
+        this.mesa.receberJogada((EstadoMesa) jogada);
     }
 
     @Override

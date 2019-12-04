@@ -86,11 +86,7 @@ public class InterfaceMesa extends JFrame{
 		mntmConectar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(atorJogador.conectar()) {
-					JOptionPane.showMessageDialog(rootPane, "Conectado!");
-				} else {
-					JOptionPane.showMessageDialog(rootPane, "Não foi possivel conectar");
-				}
+				atorJogador.conectar();
 			}
 		});
 		mnOpes.add(mntmConectar);
@@ -99,11 +95,7 @@ public class InterfaceMesa extends JFrame{
 		mntmDesconectar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (atorJogador.desconectar()) {
-					JOptionPane.showMessageDialog(rootPane, "Desconectado");
-				} else {
-					JOptionPane.showMessageDialog(rootPane, "Voce precisa estar conectado para desconectar");
-				}
+				atorJogador.desconectar();
 			}
 		});
 		mnOpes.add(mntmDesconectar);
@@ -112,7 +104,8 @@ public class InterfaceMesa extends JFrame{
 		mntmIniciarPartida.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(rootPane, "Voce precisa estar conectado para desconectar");
+				atorJogador.iniciarPartida();
+				//JOptionPane.showMessageDialog(rootPane, "Voce precisa estar conectado para desconectar");
 			}
 		});
 		mnOpes.add(mntmIniciarPartida);
@@ -128,8 +121,8 @@ public class InterfaceMesa extends JFrame{
 		btnDuvido.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int status = atorJogador.duvidar();
-				JOptionPane.showMessageDialog(null, "Voce perdeu o desafio");
+				atorJogador.duvidar();
+				// JOptionPane.showMessageDialog(null, "Voce perdeu o desafio");
 			}
 		});
 		btnDuvido.setBounds(319, 290, 114, 25);
@@ -286,6 +279,12 @@ public class InterfaceMesa extends JFrame{
 				break;
 			case 20:
 				notificar("Não é a sua vez");
+				break;
+			case -1:
+				notificar("erro não tratado");
+				break;
+			default:
+				notificar("erro default");
 				break;
 		}
 	}
