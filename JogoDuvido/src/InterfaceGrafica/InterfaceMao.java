@@ -50,7 +50,7 @@ public class InterfaceMao extends JPanel {
 
 		modeloLista = new DefaultListModel<String>();
 		modeloListaSelecionadas = new DefaultListModel<String>();
-		//cartasSelecionadas = new JList(modeloListaSelecionadas);
+		//cartasSelecionadas = new ArrayList<String>(modeloListaSelecionadas);
 
 
 
@@ -110,7 +110,8 @@ public class InterfaceMao extends JPanel {
 				JOptionPane.showMessageDialog(null, "O numero máximo de cartas declaradas é 4");
 			} else {
 				JOptionPane.showMessageDialog(null, "Voce declarou " + nroDeCartasSelecionadas + " ases");
-				//atorJogador.enviaMao(cartasSelecionadas);
+				System.out.println(criaCartas(cartasSelecionadas));
+				//atorJogador.enviaMao(criaCartas(cartasSelecionadas));
 			}
 		}
 	}
@@ -121,10 +122,10 @@ public class InterfaceMao extends JPanel {
    			String[] valorENaipe = new String[2];
    			valorENaipe = cartasSelecionadas.get(i).split(" ");
 
-   			cartasJogada.add(new Carta(1, transformaNaipe(valorENaipe[0])));
+   			cartasJogada.add(new Carta(valorCartaString(valorENaipe[1]), transformaNaipe(valorENaipe[0])));
 		}
 
-   		return null;
+   		return cartasJogada;
 	}
 
 	public Naipe transformaNaipe(String naipe) {
@@ -149,6 +150,11 @@ public class InterfaceMao extends JPanel {
 		return naipeNovaCarta;
 	}
 
+	public int valorCartaString(String valorCarta) {
+   		int valor = Integer.parseInt(valorCarta);
+
+   		return valor;
+	}
 
 	
 	public List<JLabel> atualizaMao(List<JLabel> deque) {
