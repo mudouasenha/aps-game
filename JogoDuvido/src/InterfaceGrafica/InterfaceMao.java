@@ -32,28 +32,32 @@ public class InterfaceMao extends JPanel {
 	DefaultListModel<String> modeloLista = null;
 	DefaultListModel<String> modeloListaSelecionadas = null;
 	private final Action action = new SwingAction();
- 
+	AtorJogador atorJogador = null;
+	InterfaceMesa interfaceMesa = null;
+
 
    public InterfaceMao() {
 		super();
+		//this.interfaceMesa = new InterfaceMesa(atorJogador);
+		//this.atorJogador = new AtorJogador();
 		setBackground(new Color(25, 25, 112));
 		setLayout(null);
-		
+
 		btnDeclarar = new JButton("DECLARAR");
 		btnDeclarar.setAction(action);
 		btnDeclarar.setBounds(605, 12, 102, 76);
 		add(btnDeclarar);
-		
+
 		modeloLista = new DefaultListModel<String>();
 		modeloListaSelecionadas = new DefaultListModel<String>();
 		//cartasSelecionadas = new JList(modeloListaSelecionadas);
 
 
-		
-		
+
+
 		//atualizaMao(deque);
-		
-		
+
+
 		//apenas para demonstracao
 		List<Carta> mao = new ArrayList<Carta>();
 		mao.add(new Carta(1, Naipe.OURO));
@@ -69,8 +73,8 @@ public class InterfaceMao extends JPanel {
 
 	   	recebeCartas(mao);
 		recebeCartas(mao2);
-		
-		
+
+
 		cartas = new JList(modeloLista);
 		cartas.setVisibleRowCount(1);
 		cartas.setBackground(new Color(0, 100, 0));
@@ -82,15 +86,15 @@ public class InterfaceMao extends JPanel {
 				cartasSelecionadas = cartas.getSelectedValuesList();
 			}
 		});
-		
+
 		scrollPane = new JScrollPane(cartas);
 		scrollPane.setBounds(12, 12, 580, 100);
 		scrollPane.setViewportView(cartas);
 		scrollPane.setBackground(Color.WHITE);
 		add(scrollPane);
-		
+
 	}
-	
+
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "DECLARAR");
@@ -98,9 +102,51 @@ public class InterfaceMao extends JPanel {
 		}
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int nroDeCartasSelecionadas = 4;
-			JOptionPane.showMessageDialog(null, "Voce declarou "+nroDeCartasSelecionadas+" ases");
+			int nroDeCartasSelecionadas = cartasSelecionadas.size();
+
+			if(nroDeCartasSelecionadas < 1) {
+				JOptionPane.showMessageDialog(null, "Selecione ao menos uma carta");
+			} else if(nroDeCartasSelecionadas > 4) {
+				JOptionPane.showMessageDialog(null, "O numero máximo de cartas declaradas é 4");
+			} else {
+				JOptionPane.showMessageDialog(null, "Voce declarou " + nroDeCartasSelecionadas + " ases");
+				//atorJogador.enviaMao(cartasSelecionadas);
+			}
 		}
+	}
+
+	public List<Carta> criaCartas(List<String> cartasSelecionadas) {
+   		List<Carta> cartasJogada = null;
+   		for (int i = 0; i < cartasSelecionadas.size(); i++) {
+   			String[] valorENaipe = new String[2];
+   			valorENaipe = cartasSelecionadas.get(i).split(" ");
+
+   			cartasJogada.add(new Carta(1, transformaNaipe(valorENaipe[0])));
+		}
+
+   		return null;
+	}
+
+	public Naipe transformaNaipe(String naipe) {
+		Naipe naipeNovaCarta = null;
+   		switch(naipe) {
+			case "OURO":
+				naipeNovaCarta = Naipe.OURO;
+				break;
+			case "ESPADAS":
+				naipeNovaCarta = Naipe.ESPADAS;
+				break;
+			case "COPAS":
+				naipeNovaCarta = Naipe.COPAS;
+				break;
+			case "PAUS":
+				naipeNovaCarta = Naipe.PAUS;
+				break;
+			default:
+				break;
+		}
+
+		return naipeNovaCarta;
 	}
 
 
@@ -210,7 +256,7 @@ public class InterfaceMao extends JPanel {
 	   for(Carta carta : deque) {
 		   JLabel cartaLabel = new JLabel();
 		   cartaLabel.setIcon(carta.getImagem());
-		   cartaLabel.setText(carta.getNaipe().toString() + "" + carta.getValor());
+		   cartaLabel.setText(carta.getNaipe().toString() + " " + carta.getValor());
 		   cartas.add(cartaLabel.getText());
 	   }
 	   return cartas;

@@ -19,7 +19,10 @@ public class AtorJogador {
 	protected Mesa mesaDeJogo;
 	protected Jogador jogadorLocal;
 
-	
+	public AtorJogador() {
+		this.intefaceMesa = new InterfaceMesa(this);
+	}
+
 public AtorJogador(Mesa mesaDeJogo) {
 	this.intefaceMesa = new InterfaceMesa(this);
 	this.mesaDeJogo = mesaDeJogo;
