@@ -32,14 +32,12 @@ public class InterfaceMao extends JPanel {
 	DefaultListModel<String> modeloLista = null;
 	DefaultListModel<String> modeloListaSelecionadas = null;
 	private final Action action = new SwingAction();
-	AtorJogador atorJogador = null;
-	InterfaceMesa interfaceMesa = null;
+
 
 
    public InterfaceMao() {
 		super();
-		//this.interfaceMesa = new InterfaceMesa(atorJogador);
-		//this.atorJogador = new AtorJogador();
+
 		setBackground(new Color(25, 25, 112));
 		setLayout(null);
 

@@ -13,8 +13,7 @@ import Rede.AtorNetgames;
 import InterfaceGrafica.InterfaceMesa;
 
 public class AtorJogador {
-	
-	protected AtorNetgames netgames;
+
 	protected InterfaceMesa intefaceMesa;
 	protected Mesa mesaDeJogo;
 	protected Jogador jogadorLocal;
