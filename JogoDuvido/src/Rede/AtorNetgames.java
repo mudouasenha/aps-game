@@ -68,7 +68,7 @@ public class AtorNetgames implements OuvidorProxy {
     @Override
     public void iniciarNovaPartida(Integer ordem) {
 
-        System.out.println("Recebeu inicio de partida");
+        System.out.println("Recebeu inicio de partida" + ordem);
 
         if(ordem == 1){
             String adv1 = proxy.obterNomeAdversario(2);

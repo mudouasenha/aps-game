@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JogoDuvido:jar2">
+    <output-path>$PROJECT_DIR$/classes/artifacts/JogoDuvido_jar2</output-path>
+    <root id="archive" name="JogoDuvido.jar">
+      <element id="module-output" name="JogoDuvido" />
+      <element id="library" level="module" name="jgoodies-common-1.8.0.jar" module-name="JogoDuvido" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/netgames/ngnrtFramework.jar" path-in-jar="/" />
+      <element id="library" level="module" name="jgoodies-forms-1.8.0.jar" module-name="JogoDuvido" />
+    </root>
+  </artifact>
+</component>

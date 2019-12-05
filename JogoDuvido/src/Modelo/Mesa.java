@@ -192,6 +192,8 @@ public class Mesa implements Jogada {
 		int status = analisaJogada(jogada);
 
 		atualizaInformacoes(jogada);
+
+		atorJogador.atualizaInterface(jogada);
 	}
 
 	private void atualizaInformacoes(EstadoMesa jogada) {
