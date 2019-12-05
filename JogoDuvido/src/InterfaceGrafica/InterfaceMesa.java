@@ -296,9 +296,9 @@ public class InterfaceMesa extends JFrame{
 
 	}
 	
-	public List<JLabel> atualizaCartas(List<JLabel> deque) {
-		return panel.atualizaMao((deque));
-	}
+	//public List<JLabel> atualizaCartas(List<JLabel> deque) {
+		//return panel.atualizaMao((deque));
+	//}
 	
 	public ArrayList<Carta> iconizar(ArrayList<Carta> deque) {
 		return panel.iconizador(deque);

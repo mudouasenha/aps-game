@@ -21,12 +21,16 @@ import javax.swing.JScrollPane;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class InterfaceMao extends JPanel {
 	JButton btnDeclarar = null;
 	JScrollPane scrollPane = null;
 	JList<String> cartas = null;
+	List<String> cartasSelecionadas = null;
 	DefaultListModel<String> modeloLista = null;
+	DefaultListModel<String> modeloListaSelecionadas = null;
 	private final Action action = new SwingAction();
  
 
@@ -41,6 +45,8 @@ public class InterfaceMao extends JPanel {
 		add(btnDeclarar);
 		
 		modeloLista = new DefaultListModel<String>();
+		modeloListaSelecionadas = new DefaultListModel<String>();
+		//cartasSelecionadas = new JList(modeloListaSelecionadas);
 
 
 		
@@ -49,23 +55,33 @@ public class InterfaceMao extends JPanel {
 		
 		
 		//apenas para demonstracao
-		ArrayList<Carta> mao = new ArrayList<Carta>();
+		List<Carta> mao = new ArrayList<Carta>();
 		mao.add(new Carta(1, Naipe.OURO));
 		mao.add(new Carta(1, Naipe.OURO));
 		mao.add(new Carta(1, Naipe.OURO));
-		
-		
-		JLabel carta1 = new JLabel("A_OURO");
-		carta1.setIcon(new ImageIcon(getClass().getResource("/InterfaceGrafica/Imagens/1A.png")));
-		
-		modeloLista.addElement(carta1.getText());
+
+
+	   List<Carta> mao2 = new ArrayList<Carta>();
+	   mao2.add(new Carta(1, Naipe.OURO));
+	   mao2.add(new Carta(1, Naipe.OURO));
+	   mao2.add(new Carta(1, Naipe.OURO));
+
+
+	   	recebeCartas(mao);
+		recebeCartas(mao2);
 		
 		
 		cartas = new JList(modeloLista);
 		cartas.setVisibleRowCount(1);
 		cartas.setBackground(new Color(0, 100, 0));
 		cartas.setLayoutOrientation(JList.HORIZONTAL_WRAP);
-		
+
+		cartas.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				cartasSelecionadas = cartas.getSelectedValuesList();
+			}
+		});
 		
 		scrollPane = new JScrollPane(cartas);
 		scrollPane.setBounds(12, 12, 580, 100);
@@ -86,6 +102,8 @@ public class InterfaceMao extends JPanel {
 			JOptionPane.showMessageDialog(null, "Voce declarou "+nroDeCartasSelecionadas+" ases");
 		}
 	}
+
+
 	
 	public List<JLabel> atualizaMao(List<JLabel> deque) {
 		int i = 0;
@@ -180,13 +198,13 @@ public class InterfaceMao extends JPanel {
 		return deque;
 	}
 
-   public void adicionaItensLista(ArrayList<String> cartas) {
+   public void adicionaItensLista(List<String> cartas) {
    for (int i = 0; i < cartas.size(); i++) {
 		modeloLista.add(i, cartas.get(i));
 		}
    }
    
-   public ArrayList<String> laborizador (ArrayList<Carta> deque) {
+   public ArrayList<String> laborizador (List<Carta> deque) {
 	   
 	   ArrayList<String> cartas = new ArrayList<String>();
 	   for(Carta carta : deque) {
@@ -199,7 +217,8 @@ public class InterfaceMao extends JPanel {
 	   
    }
    public void recebeCartas(List<Carta> cartas){
-
+		List<String> cartasLaborizadas = laborizador(cartas);
+		adicionaItensLista(cartasLaborizadas);
    }
 
 
