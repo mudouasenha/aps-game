@@ -193,7 +193,7 @@ public class Mesa implements Jogada {
 
 		atualizaInformacoes(jogada);
 
-		atorJogador.atualizaInterface(jogada);
+		//atorJogador.atualizaInterface(jogada);
 	}
 
 	private void atualizaInformacoes(EstadoMesa jogada) {

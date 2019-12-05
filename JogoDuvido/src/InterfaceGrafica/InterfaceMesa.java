@@ -304,11 +304,11 @@ public class InterfaceMesa extends JFrame{
 		return panel.iconizador(deque);
 	}
 	
-	public ArrayList<JLabel> laborizar(ArrayList<Carta> deque) {
+	public ArrayList<String> laborizar(ArrayList<Carta> deque) {
 		return panel.laborizador(deque);
 	}
 	
-	public void adicionarItensLista(ArrayList<JLabel> cartas) {
+	public void adicionarItensLista(ArrayList<String> cartas) {
 		panel.adicionaItensLista(cartas);
 	}
 
