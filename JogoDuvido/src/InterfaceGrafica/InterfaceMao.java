@@ -117,10 +117,11 @@ public class InterfaceMao extends JPanel {
 	}
 
 	public List<Carta> criaCartas(List<String> cartasSelecionadas) {
-   		List<Carta> cartasJogada = null;
+   		List<Carta> cartasJogada = new ArrayList<Carta>();
    		for (int i = 0; i < cartasSelecionadas.size(); i++) {
    			String[] valorENaipe = new String[2];
    			valorENaipe = cartasSelecionadas.get(i).split(" ");
+   			System.out.println(valorENaipe);
 
    			cartasJogada.add(new Carta(valorCartaString(valorENaipe[1]), transformaNaipe(valorENaipe[0])));
 		}
