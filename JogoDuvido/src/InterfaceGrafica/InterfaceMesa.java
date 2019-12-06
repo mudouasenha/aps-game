@@ -326,7 +326,7 @@ public class InterfaceMesa extends JFrame{
 	}
 	public void atualizaInformacoesDePartida(EstadoMesa estado){
 
-		String ultimaJogada = "Ultima jogada"+ estado.getMonte().getUltimaJogada().size() + traduzValor(estado.getValorDaRodada());
+		String ultimaJogada = "Ultima jogada: "+ estado.getMonte().getUltimaJogada().size() +" "+ traduzValor(estado.getValorDaRodada())+ "(s)";
 		System.out.println(ultimaJogada);
 		txtpnUltimaJogada.setText(ultimaJogada);
 
@@ -340,7 +340,7 @@ public class InterfaceMesa extends JFrame{
 
 		String qtdAdv1 = ""+estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getQtdCartas();
 		System.out.println(qtdAdv1);
-		labelQtdAdv.setText(qtdAdv1);
+		labelQtdAdv1.setText(qtdAdv1);
 
 		String valorRodada = ""+traduzValor(estado.getValorDaRodada());
 		System.out.println(valorRodada);

@@ -9,8 +9,6 @@ public class Jogador implements Jogada {
 	
 	protected List<Carta> mao;
 	protected String nome;
-	protected int qtdCartas;
-	protected boolean daVez;
 	protected int id;
 	
 	
@@ -29,13 +27,8 @@ public class Jogador implements Jogada {
 		this.nome = nome;
 	}
 	public int getQtdCartas() {
-		return qtdCartas;
+		return mao.size();
 	}
-	public void setQtdCartas(int qtdCartas) {
-		this.qtdCartas = qtdCartas;
-	}
-	public boolean isDaVez() { return daVez; }
-	public void setDaVez(boolean daVez) { this.daVez = daVez;	}
 	public int getId() { return id;}
 	public void setId(int id) {this.id = id;}
 	

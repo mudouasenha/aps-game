@@ -288,14 +288,17 @@ public class Mesa {
 
 		participantes[0] = new Jogador(atorJogador.getJogadorLocal().getNome(), 1);
 		mao = distribuiCartasParaJogador(baralho);
+		System.out.println(mao.size());
 		participantes[0].setMao(mao);
 
 		participantes[1] = new Jogador(adv1, 2);
 		mao = distribuiCartasParaJogador(baralho);
+		System.out.println(mao.size());
 		participantes[1].setMao(mao);
 
 		participantes[2] = new Jogador(adv2, 3);
 		mao = distribuiCartasParaJogador(baralho);
+		System.out.println(mao.size());
 		participantes[2].setMao(mao);
 
 
