@@ -234,6 +234,10 @@ public class Mesa {
 	public void enviaJogada(int tipo){
 
 		EstadoMesa jogada = geraEstadoJogada() ;
+		System.out.println(jogada.inicioDePartida);
+        System.out.println(jogada.getParticipantes().length);
+        System.out.println(jogada.getValorDaRodada());
+        System.out.println(jogada.getJogadorDaVez());
 
 		if(tipo == 1){
 			jogada.setDesafiou(true);
@@ -288,6 +292,8 @@ public class Mesa {
 		participantes[2] = new Jogador(adv2, 3);
 		mao = distribuiCartasParaJogador(baralho);
 		participantes[2].setMao(mao);
+
+
 
 		enviaJogada(2);
 
@@ -355,6 +361,7 @@ public class Mesa {
 	private void limpaMesa() {
 		idDaVez   = 1;
 		idVencedor = 0;
+		valorAtualDaRodada = 1;
 		monte = new Monte();
 		participantes = new Jogador[3];
 	}

@@ -302,16 +302,24 @@ public class InterfaceMesa extends JFrame{
 
 	public void atualizaInterface(EstadoMesa estado){
 		txtpnUltimaJogada.setText("Ultima jogada"+ estado.getMonte().getUltimaJogada().size() + traduzValor(estado.getValorDaRodada()));
+        System.out.println(estado.getMonte().getUltimaJogada().size() + traduzValor(estado.getValorDaRodada()));
 		labelQtdMonte.setText(""+estado.getMonte().getConteudo().size());
+		System.out.println(estado.getMonte().getConteudo().size());
 		labelQtdAdv.setText(""+estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getQtdCartas());
+        System.out.println(estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getQtdCartas());
 		labelQtdAdv1.setText(""+estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getQtdCartas());
+        System.out.println(estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getQtdCartas());
 		lblValorRodada.setText(""+traduzValor(estado.getValorDaRodada()));
+        System.out.println(traduzValor(estado.getValorDaRodada()));
 
 		if(estado.isInicioDePartida()){
 			lblNomeadversario.setText(estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getNome());
+            System.out.println(estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getNome());
 			lblNomeadversario_1.setText(estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getNome());
+            System.out.println(estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getNome());
 		}
 		panel.recebeCartas(estado.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao());
+		getContentPane().repaint();
 
 	}
 	
