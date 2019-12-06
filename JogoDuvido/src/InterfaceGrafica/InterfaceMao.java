@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 
 import Modelo.Carta;
 import Modelo.Naipe;
-import Modelo.ValorDeCarta;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -14,7 +13,6 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import java.awt.Color;
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JScrollPane;

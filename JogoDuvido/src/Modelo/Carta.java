@@ -1,9 +1,11 @@
 package Modelo;
 
+import br.ufsc.inf.leobr.cliente.Jogada;
+
 import javax.swing.ImageIcon;
 import java.util.List;
 
-public class Carta {
+public class Carta implements Jogada {
 	
 	protected int valor;
 	protected Naipe naipe;

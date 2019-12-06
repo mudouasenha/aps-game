@@ -1,6 +1,8 @@
 package Modelo;
 
-public enum Naipe {
+import br.ufsc.inf.leobr.cliente.Jogada;
+
+public enum Naipe implements Jogada {
     COPAS,
 	OURO,
 	PAUS,

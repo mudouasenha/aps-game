@@ -2,13 +2,12 @@ package Modelo;
 
 import InterfaceGrafica.AtorJogador;
 import Rede.AtorNetgames;
-import br.ufsc.inf.leobr.cliente.Jogada;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Mesa implements Jogada {
+public class Mesa {
 	
 	protected Monte monte;
 	protected Jogador[] participantes;

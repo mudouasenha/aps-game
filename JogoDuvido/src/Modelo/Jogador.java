@@ -1,9 +1,11 @@
 package Modelo;
 
 
+import br.ufsc.inf.leobr.cliente.Jogada;
+
 import java.util.List;
 
-public class Jogador {
+public class Jogador implements Jogada {
 	
 	protected List<Carta> mao;
 	protected String nome;

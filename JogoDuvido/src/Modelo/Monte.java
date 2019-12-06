@@ -1,8 +1,10 @@
 package Modelo;
 
+import br.ufsc.inf.leobr.cliente.Jogada;
+
 import java.util.List;
 
-public class Monte {
+public class Monte implements Jogada {
 	
 	protected List<Carta> conteudo;
 	protected List<Carta>  ultimaJogada;
