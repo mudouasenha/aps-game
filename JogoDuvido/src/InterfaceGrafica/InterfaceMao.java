@@ -266,6 +266,7 @@ public class InterfaceMao extends JPanel {
 	   
    }
    public void recebeCartas(List<Carta> cartas){
+	    System.out.println("Recebeu jogada na interface mao");
 		List<String> cartasLaborizadas = laborizador(cartas);
 		adicionaItensLista(cartasLaborizadas);
    }

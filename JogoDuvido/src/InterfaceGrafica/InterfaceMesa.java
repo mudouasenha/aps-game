@@ -301,25 +301,49 @@ public class InterfaceMesa extends JFrame{
 	}
 
 	public void atualizaInterface(EstadoMesa estado){
-		txtpnUltimaJogada.setText("Ultima jogada"+ estado.getMonte().getUltimaJogada().size() + traduzValor(estado.getValorDaRodada()));
-        System.out.println(estado.getMonte().getUltimaJogada().size() + traduzValor(estado.getValorDaRodada()));
-		labelQtdMonte.setText(""+estado.getMonte().getConteudo().size());
-		System.out.println(estado.getMonte().getConteudo().size());
-		labelQtdAdv.setText(""+estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getQtdCartas());
-        System.out.println(estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getQtdCartas());
-		labelQtdAdv1.setText(""+estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getQtdCartas());
-        System.out.println(estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getQtdCartas());
-		lblValorRodada.setText(""+traduzValor(estado.getValorDaRodada()));
-        System.out.println(traduzValor(estado.getValorDaRodada()));
+
+		System.out.println("Recebeu jogada na interface mesa");
+		atualizaInformacoesDePartida(estado);
 
 		if(estado.isInicioDePartida()){
-			lblNomeadversario.setText(estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getNome());
-            System.out.println(estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getNome());
-			lblNomeadversario_1.setText(estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getNome());
-            System.out.println(estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getNome());
+			atualizaNomeJogadores(estado);
 		}
 		panel.recebeCartas(estado.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao());
 		getContentPane().repaint();
+
+	}
+	public void atualizaInformacoesDePartida(EstadoMesa estado){
+
+		String ultimaJogada = "Ultima jogada"+ estado.getMonte().getUltimaJogada().size() + traduzValor(estado.getValorDaRodada());
+		System.out.println(ultimaJogada);
+		txtpnUltimaJogada.setText(ultimaJogada);
+
+		String qtdMonte = ""+estado.getMonte().getConteudo().size();
+		System.out.println(qtdMonte);
+		labelQtdMonte.setText(qtdMonte);
+
+		String qtdAdv = ""+estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getQtdCartas();
+		System.out.println(qtdAdv);
+		labelQtdAdv.setText(qtdAdv);
+
+		String qtdAdv1 = ""+estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getQtdCartas();
+		System.out.println(qtdAdv1);
+		labelQtdAdv.setText(qtdAdv1);
+
+		String valorRodada = ""+traduzValor(estado.getValorDaRodada());
+		System.out.println(valorRodada);
+		lblValorRodada.setText(valorRodada);
+
+	}
+	public void atualizaNomeJogadores(EstadoMesa estado){
+
+		String nomeAdv1 = estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getNome();
+		System.out.println(nomeAdv1);
+		lblNomeadversario.setText(nomeAdv1);
+
+		String nomeAdv2 = estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getNome();
+		System.out.println(nomeAdv2);
+		lblNomeadversario_1.setText(nomeAdv2);
 
 	}
 	

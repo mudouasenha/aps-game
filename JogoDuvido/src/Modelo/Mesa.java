@@ -192,9 +192,11 @@ public class Mesa {
 	}
 
 	public void receberJogada(EstadoMesa jogada) {
+		System.out.println("Recebeu jogada na mesa");
 		int status = analisaJogada(jogada);
-
+		System.out.println("Analisou jogada na mesa");
 		atualizaInformacoes(jogada);
+		System.out.println("Atualizou info na mesa");
 
 		atorJogador.recebeJogada(jogada);
 	}
@@ -234,10 +236,6 @@ public class Mesa {
 	public void enviaJogada(int tipo){
 
 		EstadoMesa jogada = geraEstadoJogada() ;
-		System.out.println(jogada.inicioDePartida);
-        System.out.println(jogada.getParticipantes().length);
-        System.out.println(jogada.getValorDaRodada());
-        System.out.println(jogada.getJogadorDaVez());
 
 		if(tipo == 1){
 			jogada.setDesafiou(true);
@@ -251,6 +249,13 @@ public class Mesa {
 				}
 			}
 		}
+
+		System.out.println(jogada.inicioDePartida);
+		System.out.println(jogada.getParticipantes().length);
+		System.out.println(jogada.getValorDaRodada());
+		System.out.println(jogada.getJogadorDaVez());
+
+		atorJogador.recebeJogada(jogada);
 
 		atorNetGames.enviarJogada(jogada);
 	}

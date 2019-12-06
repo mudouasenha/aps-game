@@ -79,6 +79,7 @@ public void duvidar() {
 }
 
 public void recebeJogada(EstadoMesa jogada){
+	    System.out.println("Recebeu jogada no atorjogador");
 		intefaceMesa.atualizaInterface(jogada);
 }
 
