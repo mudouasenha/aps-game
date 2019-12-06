@@ -19,7 +19,7 @@ public class AtorNetgames implements OuvidorProxy {
     public AtorNetgames(Mesa mesa) {
         super();
         this.proxy = Proxy.getInstance();
-        this.proxy.addOuvinte(this);
+        proxy.addOuvinte(this);
         this.mesa = mesa;
     }
 
@@ -45,7 +45,7 @@ public class AtorNetgames implements OuvidorProxy {
 
     public boolean iniciarPartida() {
         try {
-            this.proxy.iniciarPartida(3);
+            this.proxy.iniciarPartida(new Integer(3));
         } catch (NaoConectadoException e) {
             e.printStackTrace();
             return false;
@@ -68,7 +68,7 @@ public class AtorNetgames implements OuvidorProxy {
     @Override
     public void iniciarNovaPartida(Integer ordem) {
 
-        System.out.println("Recebeu inicio de partida" + ordem);
+        JOptionPane.showMessageDialog(null,"Recebeu inicio de partida" + ordem);
 
         if(ordem == 1){
             String adv1 = proxy.obterNomeAdversario(2);

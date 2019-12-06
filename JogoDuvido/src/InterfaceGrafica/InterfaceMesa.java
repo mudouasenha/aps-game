@@ -38,6 +38,8 @@ public class InterfaceMesa extends JFrame{
 	protected JLabel labelQtdAdv1;
 	protected JLabel labelQtdAdv;
 	protected JLabel labelQtdMonte;
+    protected JLabel labelValorRodada;
+    protected JLabel lblValorRodada;
 
 
 
@@ -110,7 +112,7 @@ public class InterfaceMesa extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				atorJogador.iniciarPartida();
-				//JOptionPane.showMessageDialog(rootPane, "Voce precisa estar conectado para desconectar");
+
 			}
 		});
 		mnOpes.add(mntmIniciarPartida);
@@ -138,6 +140,22 @@ public class InterfaceMesa extends JFrame{
 		lblMonte.setIcon(new ImageIcon(InterfaceMesa.class.getResource("/InterfaceGrafica/Imagens/monte.png")));
 		lblMonte.setBounds(319, 105, 87, 90);
 		getContentPane().add(lblMonte);
+
+        labelValorRodada = new JLabel("Valor a ser jogado: ");
+        labelValorRodada.setFont(new Font("TimesRoman", Font.BOLD, 16));
+        labelValorRodada.setForeground(Color.PINK);
+        labelValorRodada.setBackground(Color.PINK);
+        labelValorRodada.setHorizontalAlignment(SwingConstants.CENTER);
+        labelValorRodada.setBounds(250, 40, 200, 80);
+        getContentPane().add(labelValorRodada);
+
+        lblValorRodada = new JLabel("Ás");
+        lblValorRodada.setFont(new Font("TimesRoman", Font.BOLD, 16));
+        lblValorRodada.setForeground(Color.PINK);
+        lblValorRodada.setBackground(Color.PINK);
+        lblValorRodada.setHorizontalAlignment(SwingConstants.CENTER);
+        lblValorRodada.setBounds(420, 40, 80, 80);
+        getContentPane().add(lblValorRodada);
 		
 		panel_1.setBackground(Color.YELLOW);
 		panel_1.setBounds(12, 12, 133, 169);
@@ -187,7 +205,7 @@ public class InterfaceMesa extends JFrame{
 		getContentPane().add(labelQtdMonte);
 		
 		txtpnUltimaJogada = new JTextPane();
-		txtpnUltimaJogada.setEditable(true);
+		txtpnUltimaJogada.setEditable(false);
 		txtpnUltimaJogada.setBackground(Color.GRAY);
 		txtpnUltimaJogada.setText("Ultima jogada");
 		txtpnUltimaJogada.setBounds(214, 12, 345, 32);
@@ -287,6 +305,7 @@ public class InterfaceMesa extends JFrame{
 		labelQtdMonte.setText(""+estado.getMonte().getConteudo().size());
 		labelQtdAdv.setText(""+estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getQtdCartas());
 		labelQtdAdv1.setText(""+estado.getParticipantes()[posicaoAdversario2(atorJogador.getJogadorLocal().getId())].getQtdCartas());
+		lblValorRodada.setText(""+traduzValor(estado.getValorDaRodada()));
 
 		if(estado.isInicioDePartida()){
 			lblNomeadversario.setText(estado.getParticipantes()[posicaoAdversario(atorJogador.getJogadorLocal().getId())].getNome());

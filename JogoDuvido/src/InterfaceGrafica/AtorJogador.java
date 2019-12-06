@@ -7,6 +7,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 
 import Modelo.Carta;
+import Modelo.EstadoMesa;
 import Modelo.Jogador;
 import Modelo.Mesa;
 import Rede.AtorNetgames;
@@ -75,6 +76,10 @@ public void duvidar() {
 
 	}
 	this.intefaceMesa.informaStatus(status);
+}
+
+public void recebeJogada(EstadoMesa jogada){
+		intefaceMesa.atualizaInterface(jogada);
 }
 
 }

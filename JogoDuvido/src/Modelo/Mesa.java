@@ -15,7 +15,7 @@ public class Mesa {
 	protected AtorNetgames atorNetGames;
 	protected AtorJogador atorJogador;
 	protected boolean jogoEmAndamento;
-	protected String servidor = "";
+	protected String servidor = "netgames.labsoft.ufsc.br";
 	protected int idDaVez;
 	protected int valorAtualDaRodada;
 	protected int idVencedor;
@@ -183,8 +183,12 @@ public class Mesa {
 
 
 	public int iniciarPartida() {
-		atorNetGames.iniciarPartida();
-		return 10;
+		if(atorNetGames.iniciarPartida()){
+            return 10;
+        }else{
+		    return 9;
+        }
+
 	}
 
 	public void receberJogada(EstadoMesa jogada) {
@@ -192,7 +196,7 @@ public class Mesa {
 
 		atualizaInformacoes(jogada);
 
-		//atorJogador.atualizaInterface(jogada);
+		atorJogador.recebeJogada(jogada);
 	}
 
 	private void atualizaInformacoes(EstadoMesa jogada) {
