@@ -223,52 +223,64 @@ public class InterfaceMesa extends JFrame{
 		atorJogador.enviaMao(cartas);
 	}
 	public String traduzValor(int valor){
+
 		String resultado = "Valor invalido";
-		switch (valor){
-			case 1:
-				resultado = "Ás";
-				break;
-			case 2:
+
+		if(valor == 1){
+			resultado = "Ás";
+		}else{
+			if (valor == 2){
 				resultado = "Dois";
-				break;
-			case 3:
-				resultado = "Três";
-				break;
-			case 4:
-				resultado = "Quatro";
-				break;
-			case 5:
-				resultado = "Cinco";
-				break;
-			case 6:
-				resultado = "Seis";
-				break;
-			case 7:
-				resultado = "Sete";
-				break;
-			case 8:
-				resultado = "Oito";
-				break;
-			case 9:
-				resultado = "Nove";
-				break;
-			case 10:
-				resultado = "Dez";
-				break;
-			case 11:
-				resultado = "Valete";
-				break;
-			case 12:
-				resultado = "Dama";
-				break;
-			case 13:
-				resultado = "Rei";
-				break;
+			}else{
+				if (valor == 3){
+					resultado = "Três";
+				}else{
+					if (valor == 4){
+						resultado = "Quatro";
+						}else{
+						if (valor == 5){
+							resultado = "Cinco";
+						}else{
+							if (valor == 6){
+								resultado = "Seis";
+							}else{
+								if (valor == 7){
+									resultado = "Sete";
+								}else{
+									if (valor == 8){
+										resultado = "Oito";
+									}else{
+										if (valor == 9){
+											resultado = "Nove";
+										}else{
+											if (valor == 10){
+												resultado = "Dez";
+											}else{
+												if (valor == 11){
+													resultado = "Valete";
+												}else{
+													if (valor == 12){
+														resultado = "Dama";
+													}else{
+														if (valor == 13){
+															resultado = "Rei";
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					}
+				}
+			}
 
-
-		}
 		return  resultado;
 	}
+
 	public int posicaoAdversario(int seuId){
 		int resposta = seuId;
 

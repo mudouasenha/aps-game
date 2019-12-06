@@ -2,6 +2,7 @@ package Modelo;
 
 import br.ufsc.inf.leobr.cliente.Jogada;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Monte implements Jogada {
@@ -10,7 +11,10 @@ public class Monte implements Jogada {
 	protected List<Carta>  ultimaJogada;
 	protected int idUltimoJogador;
 
-	public Monte(){}
+	public Monte(){
+		conteudo = new ArrayList<Carta>();
+		ultimaJogada = new ArrayList<Carta>();
+	}
 	
 	public List<Carta> getConteudo() {
 		return conteudo;
@@ -26,7 +30,7 @@ public class Monte implements Jogada {
 	}
 	public List<Carta> esvaziaMonte() {
 		List<Carta> cartas = getConteudo();
-		setConteudo(null); // mudar;
+		setConteudo(new ArrayList<Carta>()); // mudar;
 		return cartas;
     }
 
