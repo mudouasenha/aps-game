@@ -23,7 +23,6 @@ public class Mesa {
 	public AtorNetgames getAtorNetGames() {
 		return atorNetGames;
 	}
-
 	public AtorJogador getAtorJogador() {
 		return atorJogador;
 	}
@@ -138,7 +137,7 @@ public class Mesa {
 		return maoStatus;
 	}
 
-	private void proximoJogador() {
+	public void proximoJogador() {
 
 		if(idDaVez<3){
 			idDaVez++;
@@ -148,7 +147,7 @@ public class Mesa {
 
 	}
 
-	private void incrementaValorDaRodada() {
+	public void incrementaValorDaRodada() {
 		if(valorAtualDaRodada<13){
 			valorAtualDaRodada++;
 		}else{
@@ -156,7 +155,7 @@ public class Mesa {
 		}
 	}
 
-	private void jogaNoMonte(List<Carta>  cartas) {
+	public void jogaNoMonte(List<Carta>  cartas) {
 		monte.setUltimaJogada(cartas);
 		List<Carta> m = monte.getConteudo();
 		for (Carta c : cartas) {
@@ -169,7 +168,7 @@ public class Mesa {
 
 	}
 
-	private int analisaMao(List<Carta>  cartas) {
+	public int analisaMao(List<Carta>  cartas) {
 		int retorno = 18;
 		if((cartas.size() > 4) || (cartas.size()<1) ){
 			retorno = 19;
@@ -198,17 +197,21 @@ public class Mesa {
 		atualizaInformacoes(jogada);
 		System.out.println("Atualizou info na mesa");
 
-		atorJogador.recebeJogada(jogada);
+		atorJogador.getIntefaceMesa().informaStatus(status);
+
+		atorJogador.atualizaInterface(jogada);
+
+
 	}
 
-	private void atualizaInformacoes(EstadoMesa jogada) {
+	public void atualizaInformacoes(EstadoMesa jogada) {
 		monte = jogada.getMonte();
 		idDaVez = jogada.getJogadorDaVez();
 		participantes = jogada.getParticipantes();
 		valorAtualDaRodada = jogada.getValorDaRodada();
 	}
 
-	private int analisaJogada(EstadoMesa jogada) {
+	public int analisaJogada(EstadoMesa jogada) {
 		int resultado = -1;
 		if(jogada.getJogadorDaVez() == atorJogador.getJogadorLocal().getId()){
 			resultado = 14;
@@ -250,17 +253,12 @@ public class Mesa {
 			}
 		}
 
-		System.out.println(jogada.inicioDePartida);
-		System.out.println(jogada.getParticipantes().length);
-		System.out.println(jogada.getValorDaRodada());
-		System.out.println(jogada.getJogadorDaVez());
-
-		atorJogador.recebeJogada(jogada);
+		atorJogador.atualizaInterface(jogada);
 
 		atorNetGames.enviarJogada(jogada);
 	}
 
-	private void analisaVencedor() {
+	public void analisaVencedor() {
 		for(int i=0; i<3;i++){
 			if(participantes[i].getMao().size() == 0){
 				idVencedor = i+1;
@@ -268,7 +266,7 @@ public class Mesa {
 		}
 	}
 
-	private EstadoMesa geraEstadoJogada() {
+	public EstadoMesa geraEstadoJogada() {
 		EstadoMesa estado = new EstadoMesa();
 		estado.setJogadorDaVez(this.idDaVez);
 		estado.setMonte(this.monte);
@@ -308,7 +306,7 @@ public class Mesa {
 
 	}
 
-	private List<Carta> distribuiCartasParaJogador(Carta[] baralho) {
+	public List<Carta> distribuiCartasParaJogador(Carta[] baralho) {
 		List<Carta> mao = new ArrayList<Carta>();
 		int inicioLoop ;
 		int fimLoop ;
@@ -334,7 +332,7 @@ public class Mesa {
 		return mao;
 	}
 
-	private Carta[]  criaBaralhoEmbaralhado() {
+	public Carta[]  criaBaralhoEmbaralhado() {
 		Carta[] embaralhado = new Carta[52];
 		List<Carta> baralho = geraBaralhoOrdenado();
 
@@ -353,7 +351,7 @@ public class Mesa {
 		return embaralhado;
 	}
 
-	private List<Carta> geraBaralhoOrdenado() {
+	public List<Carta> geraBaralhoOrdenado() {
 		List<Carta> retorno = new ArrayList<Carta>();
 
 		for(int i =1; i<=13; i++){
@@ -366,7 +364,7 @@ public class Mesa {
 		return retorno;
 	}
 
-	private void limpaMesa() {
+	public void limpaMesa() {
 		idDaVez   = 1;
 		idVencedor = 0;
 		valorAtualDaRodada = 1;

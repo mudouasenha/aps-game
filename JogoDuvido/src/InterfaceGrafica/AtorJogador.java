@@ -28,6 +28,10 @@ public AtorJogador(Mesa mesaDeJogo) {
 	this.mesaDeJogo = mesaDeJogo;
 }
 
+	public InterfaceMesa getIntefaceMesa() {
+		return intefaceMesa;
+	}
+
 	public void setJogadorLocal(Jogador jogadorLocal) {
 		this.jogadorLocal = jogadorLocal;
 	}
@@ -78,8 +82,7 @@ public void duvidar() {
 	this.intefaceMesa.informaStatus(status);
 }
 
-public void recebeJogada(EstadoMesa jogada){
-	    System.out.println("Recebeu jogada no atorjogador");
+public void atualizaInterface(EstadoMesa jogada){
 		intefaceMesa.atualizaInterface(jogada);
 }
 

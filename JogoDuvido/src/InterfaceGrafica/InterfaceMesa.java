@@ -117,9 +117,8 @@ public class InterfaceMesa extends JFrame{
 		});
 		mnOpes.add(mntmIniciarPartida);
 		getContentPane().setLayout(null);
-		
-		panel_1 = new JPanel();
-		panel = new InterfaceMao();
+
+		panel = new InterfaceMao(this);
 		panel.setBounds(12, 327, 719, 100);
 		getContentPane().add(panel);
 		setJMenuBar(menuBar);
@@ -129,7 +128,6 @@ public class InterfaceMesa extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				atorJogador.duvidar();
-				// JOptionPane.showMessageDialog(null, "Voce perdeu o desafio");
 			}
 		});
 		btnDuvido.setBounds(319, 290, 114, 25);
@@ -156,7 +154,8 @@ public class InterfaceMesa extends JFrame{
         lblValorRodada.setHorizontalAlignment(SwingConstants.CENTER);
         lblValorRodada.setBounds(420, 40, 80, 80);
         getContentPane().add(lblValorRodada);
-		
+
+		panel_1 = new JPanel();
 		panel_1.setBackground(Color.YELLOW);
 		panel_1.setBounds(12, 12, 133, 169);
 		getContentPane().add(panel_1);
@@ -207,13 +206,12 @@ public class InterfaceMesa extends JFrame{
 		txtpnUltimaJogada = new JTextPane();
 		txtpnUltimaJogada.setEditable(false);
 		txtpnUltimaJogada.setBackground(Color.GRAY);
-		txtpnUltimaJogada.setText("Ultima jogada");
+		txtpnUltimaJogada.setText("Não há jogadas no monte");
 		txtpnUltimaJogada.setBounds(214, 12, 345, 32);
 		getContentPane().add(txtpnUltimaJogada);
+
 		
-		panel = new InterfaceMao();
-		
-		
+
         this.setSize(760, 500);
         this.setVisible(true);
         this.setResizable(true);
@@ -262,7 +260,7 @@ public class InterfaceMesa extends JFrame{
 													if (valor == 12){
 														resultado = "Dama";
 													}else{
-														if (valor == 13){
+														if (valor == 13 || valor ==-1){
 															resultado = "Rei";
 														}
 													}
@@ -326,7 +324,13 @@ public class InterfaceMesa extends JFrame{
 	}
 	public void atualizaInformacoesDePartida(EstadoMesa estado){
 
-		String ultimaJogada = "Ultima jogada: "+ estado.getMonte().getUltimaJogada().size() +" "+ traduzValor(estado.getValorDaRodada())+ "(s)";
+		String ultimaJogada;
+		if(estado.isInicioDePartida()||estado.isDesafiou()){
+			ultimaJogada = "Não há jogadas no monte";
+		}else{
+			ultimaJogada = "Ultima jogada: "+ estado.getMonte().getUltimaJogada().size() +" "+ traduzValor(estado.getValorDaRodada()-1)+ "(s)";
+		}
+
 		System.out.println(ultimaJogada);
 		txtpnUltimaJogada.setText(ultimaJogada);
 
@@ -358,25 +362,9 @@ public class InterfaceMesa extends JFrame{
 		lblNomeadversario_1.setText(nomeAdv2);
 
 	}
-	
-	//public List<JLabel> atualizaCartas(List<JLabel> deque) {
-		//return panel.atualizaMao((deque));
-	//}
-	
-	public ArrayList<Carta> iconizar(ArrayList<Carta> deque) {
-		return panel.iconizador(deque);
-	}
-	
-	public ArrayList<String> laborizar(ArrayList<Carta> deque) {
-		return panel.laborizador(deque);
-	}
-	
-	public void adicionarItensLista(ArrayList<String> cartas) {
-		panel.adicionaItensLista(cartas);
-	}
 
 	public void notificar(String mensagem) {
-		JOptionPane.showMessageDialog(null, mensagem);
+		JOptionPane.showMessageDialog(this, mensagem);
 	}
 
 	public void informaStatus(int status) {

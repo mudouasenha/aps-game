@@ -3,6 +3,7 @@ package Modelo;
 
 import br.ufsc.inf.leobr.cliente.Jogada;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Jogador implements Jogada {
@@ -40,14 +41,19 @@ public class Jogador implements Jogada {
 
 
 	public void retiraCartasDaMao(List<Carta>  cartas) {
+		List<Carta> aSeremRemovidas = new ArrayList<Carta>();
 		for (Carta c : cartas) {
 			for (Carta c0 : mao){
 				if(c0.getValor() == c.getValor()){
 					if(c0.getNaipe()==c.getNaipe()){
-						mao.remove(c0);
+						aSeremRemovidas.add(c0);
 					}
 				}
 			}
+		}
+
+		for (Carta car : aSeremRemovidas){
+			mao.remove(car);
 		}
 	}
 }

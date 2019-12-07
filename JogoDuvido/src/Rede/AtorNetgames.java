@@ -60,7 +60,7 @@ public class AtorNetgames implements OuvidorProxy {
     @Override
     public void iniciarNovaPartida(Integer ordem) {
 
-        JOptionPane.showMessageDialog(null,"Recebeu inicio de partida" + ordem);
+        System.out.println("Recebeu inicio de partida: " + ordem);
 
         if(ordem.equals(1)){
             System.out.println("É o primeiro");
@@ -97,7 +97,6 @@ public class AtorNetgames implements OuvidorProxy {
     public void receberJogada(Jogada jogada) {
         System.out.println("Recebeu jogada no ator netgames");
         this.mesa.receberJogada((EstadoMesa) jogada);
-        System.out.println(((EstadoMesa) jogada).isInicioDePartida());
     }
 
     @Override
