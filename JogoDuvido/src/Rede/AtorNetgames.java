@@ -72,7 +72,7 @@ public class AtorNetgames implements OuvidorProxy {
 
             mesa.iniciarNovaPartida(adv1, adv2);
         }else{
-            if(ordem == 2){
+            if(ordem.equals(2)){
                 mesa.getAtorJogador().getJogadorLocal().setId(2);
             }else{
                 mesa.getAtorJogador().getJogadorLocal().setId(3);

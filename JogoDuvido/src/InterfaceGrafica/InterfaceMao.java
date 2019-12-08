@@ -60,6 +60,9 @@ public class InterfaceMao extends JPanel {
 		add(scrollPane);
 
 	}
+	public InterfaceMesa getPai(){
+       return  pai;
+    }
 
 	public class SwingAction extends AbstractAction {
 		public SwingAction() {
@@ -77,7 +80,7 @@ public class InterfaceMao extends JPanel {
 			} else {
 				JOptionPane.showMessageDialog(null, "Voce declarou " + nroDeCartasSelecionadas + " cartas");
 				System.out.println(geraCartasDeString(cartasSelecionadas));
-				pai.atorJogador.enviaMao(geraCartasDeString(cartasSelecionadas));
+				getPai().atorJogador.enviaMao(geraCartasDeString(cartasSelecionadas));
 			}
 		}
 	}

@@ -47,10 +47,10 @@ public class Mesa {
 
 	public int conectar(String nome) {
 		if(!this.conectado) {
-			String nomeJogador = nome;
-			this.atorJogador.setJogadorLocal(new Jogador(nomeJogador, 1));
-			boolean conectado = this.atorNetGames.conectar(servidor, nomeJogador);
-			if (conectado) {
+			Jogador jogador = new Jogador(nome, 1);
+			this.atorJogador.setJogadorLocal(jogador);
+			boolean conectou = this.atorNetGames.conectar(servidor, nome);
+			if (conectou) {
 				this.conectado = true;
 				return 3;
 			} else {
@@ -118,21 +118,29 @@ public class Mesa {
 
 		repassaCartas(idPerdedor, cartas);
 
-		idDaVez = idPerdedor;
-		valorAtualDaRodada = 1;
+		defineValoresDeRodadaParaPerdedor(idPerdedor);
 
 		enviaJogada(1);
 
 		return status;
 	}
 
+	public void defineValoresDeRodadaParaPerdedor(int idPerdedor){
+		idDaVez = idPerdedor;
+		valorAtualDaRodada = 1;
+	}
+
 	public int realizaJogada(List<Carta>  cartas){
-		int maoStatus = analisaMao(cartas);
-		if(maoStatus==18){
+		int maoStatus;
+		boolean suaVez = verificaSuaVez();
+		if(suaVez){
 			jogaNoMonte(cartas);
 			incrementaValorDaRodada();
 			proximoJogador();
 			enviaJogada(0);
+			maoStatus = 18;
+		}else{
+			maoStatus = 20;
 		}
 		return maoStatus;
 	}
@@ -168,26 +176,30 @@ public class Mesa {
 
 	}
 
-	public int analisaMao(List<Carta>  cartas) {
-		int retorno = 18;
-		if((cartas.size() > 4) || (cartas.size()<1) ){
-			retorno = 19;
-		}else{
-			if(atorJogador.getJogadorLocal().getId()!=idDaVez){
-				retorno = 20;
-			}
+	public boolean verificaSuaVez() {
+		boolean retorno = true;
+		if(atorJogador.getJogadorLocal().getId()!=idDaVez){
+			retorno = false;
 		}
 		return retorno;
 	}
 
 
 	public int iniciarPartida() {
-		if(atorNetGames.iniciarPartida()){
-            return 10;
-        }else{
-		    return 9;
-        }
-
+		if(!conectado){
+			return 7;
+		}else{
+			if(jogoEmAndamento){
+				return 8;
+			}else{
+				boolean iniciou = atorNetGames.iniciarPartida();
+				if(iniciou){
+					return 10;
+				}else{
+					return 9;
+				}
+			}
+		}
 	}
 
 	public void receberJogada(EstadoMesa jogada) {

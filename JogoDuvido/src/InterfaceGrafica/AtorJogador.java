@@ -66,23 +66,21 @@ public void enviaMao(List<Carta> cartas){
 
 public void duvidar() {
 	int status;
-	int atual = this.mesaDeJogo.getMonte().getIdUltimoJogador();
+	int atual = getUltimoAJogar();
 	if(atual == this.getJogadorLocal().getId()) {
 		status = 11;
 	} else {
 		status = mesaDeJogo.desafiaJogada();
 	}
-	if(status == 12) {
 
-	} else if (status == 13){
-
-	} else { // MUDAR
-
-	}
 	this.intefaceMesa.informaStatus(status);
 }
 
-public void atualizaInterface(EstadoMesa jogada){
+	public int getUltimoAJogar() {
+		return mesaDeJogo.getMonte().getIdUltimoJogador();
+	}
+
+	public void atualizaInterface(EstadoMesa jogada){
 		intefaceMesa.atualizaInterface(jogada);
 }
 
