@@ -274,6 +274,7 @@ public class Mesa {
 		for(int i=0; i<3;i++){
 			if(participantes[i].getMao().size() == 0){
 				idVencedor = i+1;
+				jogoEmAndamento = false;
 			}
 		}
 	}

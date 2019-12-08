@@ -40,6 +40,7 @@ public class InterfaceMesa extends JFrame{
 	protected JLabel labelQtdMonte;
     protected JLabel labelValorRodada;
     protected JLabel lblValorRodada;
+    protected JTextPane txtpnAvisos;
 
 
 
@@ -210,6 +211,17 @@ public class InterfaceMesa extends JFrame{
 		txtpnUltimaJogada.setBounds(214, 12, 345, 32);
 		getContentPane().add(txtpnUltimaJogada);
 
+		txtpnAvisos = new JTextPane();
+		txtpnAvisos.setEditable(false);
+		txtpnAvisos.setBackground(Color.LIGHT_GRAY);
+		txtpnAvisos.setText("AVISOS");
+		txtpnAvisos.setBounds(12, 186, 250, 133);
+		txtpnAvisos.setFont(new Font("Garuda", Font.BOLD, 20));
+		getContentPane().add(txtpnAvisos);
+
+
+
+
 		
 
         this.setSize(760, 500);
@@ -370,7 +382,8 @@ public class InterfaceMesa extends JFrame{
 	public void informaStatus(int status) {
 		switch(status) {
 			case 0:
-				notificar("Desconectou com sucesso");
+				txtpnAvisos.setText("Desconectou com sucesso");
+				break;
 			case 1:
 				notificar("Já desconectado");
 				break;
@@ -378,7 +391,7 @@ public class InterfaceMesa extends JFrame{
 				notificar("Erro de Desconexão");
 				break;
 			case 3:
-				notificar("Conectou com sucesso");
+				txtpnAvisos.setText("Conectou com sucesso");
 				break;
 			case 4:
 				notificar("Já conectado");
@@ -387,7 +400,7 @@ public class InterfaceMesa extends JFrame{
 				notificar("Erro de Conexao");
 				break;
 			case 6:
-				notificar("Recebeu nova partida");
+				txtpnAvisos.setText("Recebeu nova partida");
 				break;
 			case 7:
 				notificar("Sem conexão para inicio");
@@ -399,7 +412,7 @@ public class InterfaceMesa extends JFrame{
 				notificar("Não há jogadores suficientes");
 				break;
 			case 10:
-				notificar("Solicitação de início enviada");
+				txtpnAvisos.setText("Solicitação de início enviada");
 				break;
 			case 11:
 				notificar("Não duvide de si mesmo");
@@ -411,7 +424,7 @@ public class InterfaceMesa extends JFrame{
 				notificar("Desafiador perdeu");
 				break;
 			case 14:
-				notificar("Sua vez de jogar");
+				txtpnAvisos.setText("Sua vez de jogar");
 				break;
 			case 15:
 				notificar("Voce venceu");
@@ -423,7 +436,7 @@ public class InterfaceMesa extends JFrame{
 				notificar("Recebeu cartas do ");
 				break;
 			case 18:
-				notificar("Jogada sucedida");
+				txtpnAvisos.setText("Jogada sucedida");
 				break;
 			case 19:
 				notificar("Numero de cartas inválido");
