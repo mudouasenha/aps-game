@@ -330,8 +330,9 @@ public class InterfaceMesa extends JFrame{
 		if(estado.isInicioDePartida()){
 			atualizaNomeJogadores(estado);
 		}
+		panel.recebeCartas(estado.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao());
 		if(estado.isDesafiou()||estado.isInicioDePartida()){
-			panel.recebeCartas(estado.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao());
+
 		}
 
 		if(estado.getIdVencedor() != 0){

@@ -93,7 +93,6 @@ public class InterfaceMao extends JPanel {
    			System.out.println(valorENaipe);
 
    			cartasJogada.add(new Carta(valorCartaString(valorENaipe[1]), transformaNaipe(valorENaipe[0])));
-   			modeloLista.removeElement(cartasSelecionadas.get(i));
 		}
 
    		return cartasJogada;
@@ -142,7 +141,7 @@ public class InterfaceMao extends JPanel {
 
    public void adicionaItensLista(List<String> cartas) {
 
-   	//modeloLista.clear();
+   	modeloLista.clear();
 
    	for (int i = 0; i < cartas.size(); i++) {
 		modeloLista.addElement(cartas.get(i));
