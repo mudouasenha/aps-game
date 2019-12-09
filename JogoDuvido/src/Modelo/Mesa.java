@@ -206,6 +206,10 @@ public class Mesa {
 		System.out.println("Recebeu jogada na mesa");
 		int status = analisaJogada(jogada);
 		System.out.println("Analisou jogada na mesa");
+
+		if(status == 16){
+			jogoEmAndamento = false;
+		}
 		atualizaInformacoes(jogada);
 		System.out.println("Atualizou info na mesa");
 
@@ -240,6 +244,8 @@ public class Mesa {
 				}else{
 					if (jogada.isDesafiou() && jogada.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao().size() > participantes[atorJogador.getJogadorLocal().getId()-1].getMao().size()){
 						resultado = 17;
+					}else{
+						resultado = 19;
 					}
 				}
 			}
@@ -268,6 +274,14 @@ public class Mesa {
 		atorJogador.atualizaInterface(jogada);
 
 		atorNetGames.enviarJogada(jogada);
+
+		if(!jogoEmAndamento){
+			finalizaPartida();
+		}
+	}
+
+	public void finalizaPartida() {
+		atorNetGames.finalizarPartida();
 	}
 
 	public void analisaVencedor() {

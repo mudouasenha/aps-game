@@ -26,6 +26,7 @@ public class InterfaceMesa extends JFrame{
 	protected JMenuItem mntmIniciarPartida = null;
 	protected InterfaceMao panel = null;
 	protected JButton btnDuvido = null;
+	protected JButton btnJogarNovamente = null;
 	protected JLabel lblMonte = null;
 	protected JPanel panel_1 = null;
 	protected JLabel lblImgcartas = null;
@@ -221,7 +222,6 @@ public class InterfaceMesa extends JFrame{
 
 
 
-
 		
 
         this.setSize(760, 500);
@@ -331,6 +331,9 @@ public class InterfaceMesa extends JFrame{
 			atualizaNomeJogadores(estado);
 		}
 		panel.recebeCartas(estado.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao());
+		if(estado.getIdVencedor() != 0){
+			geraBotaoJogarNovamente();
+		}
 		getContentPane().repaint();
 
 	}
@@ -373,6 +376,18 @@ public class InterfaceMesa extends JFrame{
 		System.out.println(nomeAdv2);
 		lblNomeadversario_1.setText(nomeAdv2);
 
+	}
+
+	public void geraBotaoJogarNovamente(){
+		btnJogarNovamente = new JButton("JOGAR NOVAMENTE");
+		btnJogarNovamente.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				atorJogador.iniciarPartida();
+			}
+		});
+		btnJogarNovamente.setBounds(180, 50, 400, 200);
+		getContentPane().add(btnJogarNovamente);
 	}
 
 	public void notificar(String mensagem) {
@@ -433,13 +448,13 @@ public class InterfaceMesa extends JFrame{
 				notificar("Voce perdeu");
 				break;
 			case 17:
-				notificar("Recebeu cartas do ");
+				notificar("Recebeu as cartas do monte");
 				break;
 			case 18:
 				txtpnAvisos.setText("Jogada sucedida");
 				break;
 			case 19:
-				notificar("Numero de cartas inválido");
+				txtpnAvisos.setText("Recebeu jogada");
 				break;
 			case 20:
 				notificar("Não é a sua vez");

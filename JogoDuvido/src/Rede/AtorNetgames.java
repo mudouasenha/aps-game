@@ -53,6 +53,19 @@ public class AtorNetgames implements OuvidorProxy {
         return true;
     }
 
+    public boolean finalizarPartida(){
+        try {
+            this.proxy.finalizarPartida();
+        } catch (NaoConectadoException e) {
+            e.printStackTrace();
+            return false;
+        } catch (NaoJogandoException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
 
 
 
