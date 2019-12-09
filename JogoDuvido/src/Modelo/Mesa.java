@@ -20,19 +20,13 @@ public class Mesa {
 	protected int valorAtualDaRodada;
 	protected int idVencedor;
 
-	public AtorNetgames getAtorNetGames() {
-		return atorNetGames;
-	}
+
 	public AtorJogador getAtorJogador() {
 		return atorJogador;
 	}
 
-
 	public Monte getMonte() {
 		return monte;
-	}
-	public Jogador[] getParticipantes() {
-		return participantes;
 	}
 	
 	public Mesa() {
@@ -225,30 +219,38 @@ public class Mesa {
 		idDaVez = jogada.getJogadorDaVez();
 		participantes = jogada.getParticipantes();
 		valorAtualDaRodada = jogada.getValorDaRodada();
+		if(jogada.isInicioDePartida()){
+			this.jogoEmAndamento = true;
+		}
 	}
 
 	public int analisaJogada(EstadoMesa jogada) {
 		int resultado = -1;
-		if(jogada.getJogadorDaVez() == atorJogador.getJogadorLocal().getId()){
-			resultado = 14;
-		}else{
-			if(jogada.getIdVencedor() != 0){
-				if(jogada.getIdVencedor() == atorJogador.getJogadorLocal().getId()){
-					resultado = 15;
-				}else{
-					resultado = 16;
-				}
+		if(jogada.getIdVencedor() != 0){
+			if(jogada.getIdVencedor() == atorJogador.getJogadorLocal().getId()){
+				resultado = 15;
 			}else{
-				if(jogada.isInicioDePartida()){
-					resultado = 6;
-				}else{
-					if (jogada.isDesafiou() && jogada.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao().size() > participantes[atorJogador.getJogadorLocal().getId()-1].getMao().size()){
+				resultado = 16;
+			}
+		}else{
+			if(jogada.isInicioDePartida()){
+				resultado = 6;
+			}else{
+				if(jogada.isDesafiou()){
+					if(jogada.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao().size() > participantes[atorJogador.getJogadorLocal().getId()-1].getMao().size()){
 						resultado = 17;
 					}else{
 						resultado = 19;
 					}
-				}
+				}else{
+					if(jogada.getJogadorDaVez() == atorJogador.getJogadorLocal().getId()){
+						resultado = 14;
+				}else{
+						resultado = 19;
+					}
 			}
+		}
+
 		}
 
 		return resultado;
@@ -392,6 +394,7 @@ public class Mesa {
 	}
 
 	public void limpaMesa() {
+		jogoEmAndamento = true;
 		idDaVez   = 1;
 		idVencedor = 0;
 		valorAtualDaRodada = 1;

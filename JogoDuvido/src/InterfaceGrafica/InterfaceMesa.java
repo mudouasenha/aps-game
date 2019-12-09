@@ -121,7 +121,7 @@ public class InterfaceMesa extends JFrame{
 		getContentPane().setLayout(null);
 
 		panel = new InterfaceMao(this);
-		panel.setBounds(12, 327, 719, 100);
+		panel.setBounds(12, 327, 719, 120);
 		getContentPane().add(panel);
 		setJMenuBar(menuBar);
 		
@@ -330,11 +330,14 @@ public class InterfaceMesa extends JFrame{
 		if(estado.isInicioDePartida()){
 			atualizaNomeJogadores(estado);
 		}
-		panel.recebeCartas(estado.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao());
+		if(estado.isDesafiou()||estado.isInicioDePartida()){
+			panel.recebeCartas(estado.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao());
+		}
+
 		if(estado.getIdVencedor() != 0){
 			geraBotaoJogarNovamente();
 		}
-		getContentPane().repaint();
+		//getContentPane().repaint();
 
 	}
 	public void atualizaInformacoesDePartida(EstadoMesa estado){
@@ -384,6 +387,7 @@ public class InterfaceMesa extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				atorJogador.iniciarPartida();
+				btnJogarNovamente = null;
 			}
 		});
 		btnJogarNovamente.setBounds(180, 50, 400, 200);
