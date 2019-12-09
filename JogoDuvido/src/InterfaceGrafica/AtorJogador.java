@@ -61,6 +61,9 @@ public void iniciarPartida() {
 
 public void enviaMao(List<Carta> cartas){
 	int status = mesaDeJogo.realizaJogada(cartas);
+	for(Carta c : cartas){
+		System.out.println("Jogou "+c.getValor() + " de "+c.getNaipe());
+	}
 	intefaceMesa.informaStatus(status);
 }
 

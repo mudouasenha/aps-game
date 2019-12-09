@@ -69,16 +69,26 @@ public class Mesa {
 				return 1;
 			}
 	}
+	public int valorDaRodadaAnterior(){
+	    if(valorAtualDaRodada>1){
+	        return valorAtualDaRodada -1;
+        }else{
+	        return 1;
+        }
+    }
 
 	public boolean verificaBlefe() {
 		boolean blefou = false;
-
+        System.out.println("Iniciando desafio");
+        System.out.println("Valor da rodada é: "+valorDaRodadaAnterior());
 		for (Carta c : monte.getUltimaJogada()){
-			if(c.getValor()!=valorAtualDaRodada){
+
+			if(c.getValor()!=valorDaRodadaAnterior()){
+                System.out.println("Valor jogado foi: "+ c.getValor());
 				blefou = true;
 			}
 		}
-
+        System.out.println("Blefou? "+ blefou);
 		return blefou;
 	}
 
@@ -98,6 +108,7 @@ public class Mesa {
 	public int desafiaJogada() {
 		int status = -1;
 		//.......
+        System.out.println("Iniciando desafio");
 		boolean blefou = verificaBlefe();
 		int idPerdedor = -1;
 		if(blefou){

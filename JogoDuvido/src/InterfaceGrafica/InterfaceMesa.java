@@ -330,10 +330,12 @@ public class InterfaceMesa extends JFrame{
 		if(estado.isInicioDePartida()){
 			atualizaNomeJogadores(estado);
 		}
-		panel.recebeCartas(estado.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao());
-		if(estado.isDesafiou()||estado.isInicioDePartida()){
-
+		List<Carta> cartasDoJogLocal = estado.getParticipantes()[atorJogador.getJogadorLocal().getId()-1].getMao();
+		for(Carta c : cartasDoJogLocal){
+			System.out.println("Recebeu na mesa "+c.getValor() + " de "+c.getNaipe());
 		}
+		panel.recebeCartas(cartasDoJogLocal);
+
 
 		if(estado.getIdVencedor() != 0){
 			geraBotaoJogarNovamente();

@@ -125,17 +125,6 @@ public class InterfaceMao extends JPanel {
    		return Integer.parseInt(valorCarta);
 	}
 
-
-	public List<JLabel> atualizaMao(List<JLabel> deque) {
-
-		for(JLabel carta : deque) {
-			modeloLista.addElement(carta.getText());
-			cartas.add(carta);
-		}
-		cartas.repaint();
-
-		return deque;
-	  }
    
 
 
@@ -143,9 +132,13 @@ public class InterfaceMao extends JPanel {
 
    	modeloLista.clear();
 
-   	for (int i = 0; i < cartas.size(); i++) {
-		modeloLista.addElement(cartas.get(i));
-		}
+   	for(String c : cartas){
+		modeloLista.addElement(c);
+		System.out.println(c);
+
+	}
+
+
 
    }
    
@@ -158,6 +151,7 @@ public class InterfaceMao extends JPanel {
 		   cartaLabel.setText(carta.getNaipe().toString() + " " + carta.getValor());
 		   cartas.add(cartaLabel.getText());
 	   }
+
 	   return cartas;
 	   
    }
@@ -165,6 +159,7 @@ public class InterfaceMao extends JPanel {
 	    System.out.println("Recebeu cartas na interface mao");
 		List<String> cartasLaborizadas = laborizador(cartas);
 		adicionaItensLista(cartasLaborizadas);
+
    }
 
 
